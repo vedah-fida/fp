@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class FpConfig(AppConfig):
-    name = 'fp'
+    name = 'Furniture_Palace'

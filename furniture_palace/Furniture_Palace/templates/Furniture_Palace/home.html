@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+
+    <body>
+        <form action = "/Furniture_Palace/login/" method = "post" >
+            {%csrf_token%}
+            <input type = "email" placeholder="email address" name="email"/>
+            <input type = "password" placeholder="password" name="pword"/>
+            <input type="submit" value = "login"/>
+        </form>
+    </body>
+</html>
