@@ -4,7 +4,7 @@ from .models import Customer
 
 # login logic
 def home(request):
-    return render(request, 'Furniture_Palace/home.html')
+    return render(request, 'fp/home.html')
 
 
 def login(request):
@@ -18,6 +18,6 @@ def login(request):
 
         if customer:
             if customer.customer_password == password:
-                return render(request, 'Furniture_Palace/success.html')
+                return render(request, 'fp/success.html')
             else:
                 return HttpResponse("<h1>Unsuccesful Login</h1>")

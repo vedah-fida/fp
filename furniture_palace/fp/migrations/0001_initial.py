@@ -65,8 +65,8 @@ class Migration(migrations.Migration):
                 ('order_date', models.DateField(auto_now_add=True)),
                 ('order_price', models.DecimalField(decimal_places=2, max_digits=20)),
                 ('order_completion_date', models.DateField()),
-                ('carpenter', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='Furniture_Palace.Carpenter')),
-                ('customer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Furniture_Palace.Customer')),
+                ('carpenter', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='fp.Carpenter')),
+                ('customer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='fp.Customer')),
             ],
         ),
         migrations.CreateModel(
@@ -94,8 +94,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('temp_carpenter_name', models.CharField(max_length=100)),
-                ('carpenter', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Furniture_Palace.Carpenter')),
-                ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Furniture_Palace.Order')),
+                ('carpenter', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='fp.Carpenter')),
+                ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='fp.Order')),
             ],
         ),
         migrations.CreateModel(
@@ -104,7 +104,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('tool_name', models.CharField(max_length=250)),
                 ('lent', models.BooleanField(default=False)),
-                ('temp_carpenter', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='Furniture_Palace.TempCarpenter')),
+                ('temp_carpenter', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='fp.TempCarpenter')),
             ],
         ),
     ]
