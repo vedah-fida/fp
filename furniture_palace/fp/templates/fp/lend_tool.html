@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lend tool</title>
+</head>
+    <body>
+        <h1>Lend tool page</h1>
+
+            <div>
+                <a href="{% url 'register_customer' %}">Register Customer</a>
+                <a href="{% url 'make_order' %}">Make Order</a>
+                <a href="{% url 'lend_tool' %}">Lend Tool</a>
+                <a href="{% url 'payment_summary' %}">Payments</a>
+            </div>
+    <br><br>
+        <a href="{% url 'logout' %}">logout</a>
+    </body>
+</html>

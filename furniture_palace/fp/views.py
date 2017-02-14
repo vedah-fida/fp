@@ -1,23 +1,47 @@
-from django.shortcuts import render, HttpResponse
-from .models import Customer
+from django.shortcuts import HttpResponse, HttpResponseRedirect, render
+from django.core.urlresolvers import reverse
+from .fp_users import carpenter_is_valid
 
 
-# login logic
 def home(request):
-    return render(request, 'fp/home.html')
+    url = reverse('carpenter_login_page')
+    return HttpResponseRedirect(url)
 
 
-def login(request):
-    if request.method == "POST":
-        email = request.POST['email']
-        password = request.POST['pword']
-        try:
-            customer = Customer.objects.get(customer_email=email)
-        except Customer.DoesNotExist:
-            return HttpResponse("<h1>Unsuccesful Login</h1>")
+def carpenter_login_page(request):
+    return render(request, 'fp/carpenter_login.html')
 
-        if customer:
-            if customer.customer_password == password:
-                return render(request, 'fp/success.html')
-            else:
-                return HttpResponse("<h1>Unsuccesful Login</h1>")
+
+def carpenter_login(request):
+    postdata = request.POST.copy()
+    email = postdata.get('email', '')
+    password = postdata.get('pword', '')
+    if carpenter_is_valid(email, password):
+        return render(request, 'fp/carpenter_home.html')
+    else:
+        return HttpResponse("<h1>Unsuccessful Login.</h1>")
+
+
+def lend_tool(request):
+    # some code for lending tools
+    return render(request, 'fp/lend_tool.html')
+
+
+def register_customer(request):
+    # some code for registering customer
+    return render(request, 'fp/register_customer.html')
+
+
+def payment_summary(request):
+    # some code for payment summary
+    return render(request, 'fp/carpenter_payments.html')
+
+
+def make_order(request):
+    # some code for making order
+    return render(request, 'fp/make_order.html')
+
+
+def logout(request):
+    url = reverse('carpenter_login_page')
+    return HttpResponseRedirect(url)

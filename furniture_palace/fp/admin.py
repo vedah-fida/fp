@@ -2,10 +2,8 @@ from django.contrib import admin
 from .models import *
 
 
-# Register your models here.
-
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ('customer_name', 'customer_email', 'customer_class','customer_tel_no',)
+    list_display = ('customer_name', 'customer_email', 'customer_class', 'customer_tel_no',)
 
 
 admin.site.register(Customer, CustomerAdmin)
@@ -47,19 +45,21 @@ admin.site.register(Tool, ToolAdmin)
 
 
 class BedAdmin(admin.ModelAdmin):
-    list_display = ('bed_name',)
+    list_display = ('category', 'bed_price',)
+
 
 admin.site.register(Bed, BedAdmin)
 
 
 class SeatAdmin(admin.ModelAdmin):
-    list_display = ('seat_name',)
+    list_display = ('category', 'seat_price',)
+
 
 admin.site.register(Seat, SeatAdmin)
 
 
 class TableAdmin(admin.ModelAdmin):
-    list_display = ('table_name',)
+    list_display = ('category', 'table_price',)
+
 
 admin.site.register(Table, TableAdmin)
-
