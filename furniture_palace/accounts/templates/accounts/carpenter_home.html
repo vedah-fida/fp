@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carpenter Home</title>
+</head>
+    <body>
+
+        <h1>Carpenter Home</h1>
+        <h4>Hello <span style="color: green">{{ carpenter }}</span></h4>
+        <div>
+            <a href="{% url 'accounts:customer_registration' %}">Register Customer</a>
+            <a href="{% url 'orders:order_page' %}">Make Order</a>
+            <a href="#">Lend Tool</a>
+            <a href="#">Payments</a>
+        </div>
+        <br><br>
+        <a href="{% url 'accounts:logout' %}">logout</a>
+    </body>
+</html>
