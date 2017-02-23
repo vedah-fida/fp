@@ -2,20 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Carpenter Login</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/static/css/materialize.css"/>
+    <link rel="stylesheet" href="/static/css/fp.css"/>
+    <title>Furniture Palace</title>
 </head>
-    <body>
-        <h1>Furniture Palace</h1>
-        <h3>Carpenter Login.</h3>
-            <div id="carpenter_login">
-                <div><p style="color:red">{{ msg }}</p></div>
-                <form action = "{% url 'accounts:login' %}" method = "post" >
-                    {%csrf_token%}
-                    <input type = "text" placeholder="email" name="username"  required/>
-                    <input type = "password" placeholder="password" name="password" required/>
-                    <input type="submit" value = "login"/>
-                </form>
-            </div>
 
-    </body>
+<body>
+    <div class="row">
+        <!--leftarea-->
+        <div id="left-login" class="col s12 m6 l6 teal darken-3 fill-vertical" >
+            <img class="responsive-img" src="/static/img/fp_logo.png" alt="furniture palace" />
+            <h1 class="flow-text">Furniture Palace.</h1>
+            <h3 class="flow-text">Your only furniture store.</h3>
+        </div>
+
+        <!--right area with login-->
+        <div id="right-login" class="col s12 m6 l6 fill-vertical">
+            <div class="{{ error_class }} "><p style="color:white">{{ error_msg }}</p></div>
+            <form action="{% url 'accounts:login' %}" method="post" class="col s12">
+                {% csrf_token %}
+                <!--input field for username-->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="username" type="text"  class="validate" name="username" required />
+                        <label for="username">Username</label>
+                    </div>
+                </div>
+
+                <!--input field for password-->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">vpn_key</i>
+                        <input id="password" type="password"  class="validate" name="password" required />
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+
+                <!--submit button for the  login form-->
+                <input class="btn waves-effect waves-light" type="submit" value="login"/>
+            </form>
+        </div>
+    </div>
+
+
+    <!--materialize & jquery js file-->
+    <script src="/static/js/jquery-3.1.1.min.js"></script>
+    <script src="/static/js/materialize.js"></script>
+</body>
+
 </html>

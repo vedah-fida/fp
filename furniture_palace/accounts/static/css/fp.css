@@ -1,0 +1,75 @@
+@font-face {
+    font-family: Pacifico;
+    src: url('../fonts/fp_fonts/Pacifico.ttf');
+}@font-face {
+    font-family: AbrilFatface;
+    src: url('../fonts/fp_fonts/AbrilFatface-Regular.otf');
+}
+body{
+    overflow: hidden;
+}
+
+.fill-vertical{
+    height: 100vh;
+}
+
+#right-login{
+    padding: 100px;
+}
+
+#left-login{
+    padding: 100px;
+}
+
+#left-login > h1{
+    font-family: AbrilFatface;
+    font-size: 5em;
+}
+
+#left-login > h3{
+    color: #e0e0e0;
+    font-family: Pacifico;
+    font-size: 3em;
+}
+#sidebar{
+    padding: 50px;
+}
+
+#top-navigation{
+    padding-top: 5px;
+}
+
+.action-item>a{
+    display: block;
+    color: #80cbc4;
+    padding: 10px;
+    padding-left: 10px;
+}
+
+.action-item>a:hover{
+    border-left: 2px solid #80cbc4;
+    color: #26a69a;
+}
+
+#logout{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
+}
+
+#content{
+    overflow-y: auto;
+    padding-left: 50px;
+}
+
+.heading>h4{
+    color: #009688;
+}
+
+#complete{
+    text-color: #00e676;
+}
+
+#incomplete{
+    text-color: #ff1744;
+}

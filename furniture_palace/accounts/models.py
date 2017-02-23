@@ -26,10 +26,10 @@ class TempCarpenter(models.Model):
 
 class Customer(models.Model):
     customer_name = models.CharField(max_length=100)
-    customer_email = models.EmailField(max_length=254)
+    customer_email = models.EmailField(max_length=254, unique=True)
     customer_tel_no = models.CharField(max_length=100)
-    customer_address = models.TextField()
-
+    customer_address = models.CharField(max_length=255)
+    customer_physical_address = models.TextField()
     # customer type according to order made
     gold, silver = 'Gold', 'Silver'
     customer_type_choices = (

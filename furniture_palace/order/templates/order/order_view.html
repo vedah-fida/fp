@@ -1,0 +1,118 @@
+{% extends "./base.html" %}
+
+{% block title %}
+Orders Furniture Palace
+{% endblock %}
+
+{% block heading %}
+<div class="heading">
+    <h4>Orders.</h4>
+</div>
+{% endblock %}
+
+<!--order top navigation-->
+{% block topnav %}
+<li class="tab"><a href="{% url 'orders:all_orders' %}">View Orders</a></li>
+<li class="tab"><a href="{% url 'orders:order_page' %}">Make Order</a></li>
+<li class="tab"><a href="{% url 'orders:assign_order_page' %}">Assign Order</a></li>
+{% endblock %}
+
+
+{% block content %}
+    <p style="color: green">{{ msg }}</p>
+    <table class="bordered responsive-table highlight centered">
+        <thead>
+          <tr>
+              <th>Order Id</th>
+              <th>Order Name</th>
+              <th>Quantity</th>
+              <th>Order Price</th>
+              <th>Order Date</th>
+              <th>
+                 <div class="input-field">
+                     <form action="{% url 'orders:order_status' %}" id="order_status_form" method="post">
+                         {% csrf_token %}
+                        <select id="order_status" name="status">
+                          <option value="" disabled selected>complete_status</option>
+                          <option value="all">all</option>
+                          <option value="complete">complete</option>
+                          <option value="incomplete">incomplete</option>
+                        </select>
+                     </form>
+                 </div>
+              </th>
+              <th>
+                  <div class="input-field">
+                     <form action="{% url 'orders:customer_orders' %}" id="customer_form" method="post">
+                         {% csrf_token %}
+                        <select id="customer_select" name="customer_id">
+                          <option value="" disabled selected>customer</option>
+                          {% for customer in customers %}
+                            <option value="{{ customer.id }}">{{ customer.customer_name }}</option>
+                          {% endfor %}
+                        </select>
+                     </form>
+                 </div>
+              </th>
+              <th>
+                  <div class="input-field">
+                     <form action="{% url 'orders:carpenter_orders' %}" id="carpenter_form" method="post">
+                         {% csrf_token %}
+                        <select id="carpenter_select" name="carpenter_id">
+                          <option value="" disabled>carpenter</option>
+                          {% for carpenter in carpenters %}
+                            <option value="{{ carpenter.id }}">{{ carpenter.username }}</option>
+                          {% endfor %}
+                        </select>
+                     </form>
+                 </div>
+              </th>
+
+          </tr>
+        </thead>
+
+        <tbody id="orders">
+            {% for order in orders %}
+              <tr>
+                  <td>{{ order.id }}</td>
+                  <td>{{ order.order_name }}</td>
+                  <td>{{ order.quantity }}</td>
+                  <td>{{ order.order_price }}</td>
+                  <td>{{ order.order_date }}</td>
+                  <td>
+                         <form action="{% url 'orders:change_complete_status' %}" id="complete_status_form" method="post">
+                         {% csrf_token %}
+                             <table>
+                                 <tr>
+                                     <td>
+                                        <select id="complete_status" name="order_status">
+                                            {% if order.complete_status is True %}
+                                            <option value={{ order.complete_status }} selected>yes</option>
+                                            <option value=False>no</option>
+                                            {% else %}
+                                            <option value=True>yes</option>
+                                            <option value={{ order.complete_status }} selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                        <input type="text" name="order_id" value="{{ order.id }}" hidden />
+                                     </td>
+                                     <td>
+                                         <input type="submit" value="change" />
+                                     </td>
+                                 </tr>
+                             </table>
+                     </form>
+                   </td>
+                  <td>{{ order.customer }}</td>
+                  <td>{{ order.carpenter }}</td>
+              </tr>
+            {% empty %}
+            <tr><p class="card-panel red lighten-2" style="text-align: center">None matches the criteria.</p></tr>
+            {% endfor %}
+          </tbody>
+     </table>
+<br><br>
+<p>Customer orders.</p>
+
+
+{% endblock %}

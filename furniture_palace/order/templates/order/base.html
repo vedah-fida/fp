@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/static/css/materialize.css"/>
+    <link rel="stylesheet" href="/static/css/fp.css"/>
+    <title>{% block title %}Carpenter Home{% endblock %}</title>
+</head>
+<body>
+    <div class="row">
+
+        <!--side navigation bar-->
+        <div id="sidebar" class="col s12 m3 l3 fill-vertical teal darken-3 z-depth-5">
+            <div id="top-navigation" class="center-align">
+                <i class="medium material-icons">perm_identity</i>
+                <h6 class="center-align">{{ username|capfirst }}</h6>
+            </div>
+            <div class="divider teal lighten-1"></div>
+            <br><br>
+            <div class="action-item ">
+                 <a href="{% url 'accounts:customer_registration' %}">Customers</a>
+            </div>
+            <div class="action-item">
+                <a href="{% url 'orders:all_orders' %}">Orders</a>
+            </div>
+            <div class="action-item">
+                <a href="#">Payments</a>
+            </div>
+            <div id="logout" class="action-item">
+                <a href="{% url 'accounts:logout' %}">logout</a>
+            </div>
+        </div>
+
+         <!--content div-->
+        <div id="content" class="col s12 m9 l9 fill-vertical">
+            <!--heading-->
+            {% block heading %}<h4>Carpenter Home</h4>{% endblock %}
+
+            <!--order top navigation-->
+            {% block topnav %}{% endblock %}
+
+            <!--content body-->
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <!--materialize & jquery js file-->
+    <script src="/static/js/jquery-3.1.1.min.js"></script>
+    <script src="/static/js/materialize.js"></script>
+    <script src="/static/js/fp.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from order.models import Order
+from order.models import Order, OrderPayment
 
 
 class OrderAdmin(admin.ModelAdmin):
@@ -7,7 +7,7 @@ class OrderAdmin(admin.ModelAdmin):
         'order_name',
         'order_date',
         'order_completion_date',
-        'order_complete',
+        'complete_status',
         'order_price',
         'customer',
         'carpenter',
@@ -15,3 +15,14 @@ class OrderAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Order, OrderAdmin)
+
+
+class OrderPaymentAdmin(admin.ModelAdmin):
+    list_display = (
+        'order',
+        'deposit',
+        'balance',
+    )
+
+
+admin.site.register(OrderPayment, OrderPaymentAdmin)

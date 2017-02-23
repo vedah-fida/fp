@@ -1,0 +1,39 @@
+{% extends "./base.html" %}
+{% block heading %}
+<div class="heading">
+    <h4>Orders.</h4>
+</div>
+{% endblock %}
+
+{% block content%}
+        <div>
+            <a href="{% url 'accounts:customer_registration' %}">Register Customer</a>
+            <a href="{% url 'accounts:view_customer' %}">View Customer</a>
+        </div>
+        <p style="color: green;">{{ msg }}</p>
+        <table>
+              <thead>
+                <tr>
+                  <th>Customer Name</th>
+                  <th>Customer Email</th>
+                  <th>Customer Tel</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for customer in customers %}
+                <tr>
+                  <td name = "customer_name" >
+                      <form action="{% url 'accounts:get_customer' %}" method="post">
+                          {% csrf_token %}
+                          {{ customer.customer_name }}
+                          <input type="hidden" name="customer_id" value="{{ customer.id }}">
+                          <input type="submit" value="edit">
+                      </form>
+                  </td>
+                  <td name = "customer_email">{{ customer.customer_email }}</td>
+                  <td name = "customer_tel">{{ customer.customer_tel_no }}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+        </table>
+{% endblock %}

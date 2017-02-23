@@ -4,9 +4,9 @@ from django.db import models
 # Create your models here.
 class Furniture(models.Model):
     # bed options
-    double = 'double'
-    single = 'single'
-    double_decker = 'double_decker'
+    double = 'Double'
+    single = 'Single'
+    double_decker = 'Double Decker'
     # table options
     coffee = 'Coffee Table'
     dinning = 'Dinning Table'
@@ -38,15 +38,17 @@ class Furniture(models.Model):
     )
 
     furniture_category_choices = (
-        ('bed', 'Beds'),
-        ('seat', 'Seats'),
-        ('table', 'Tables'),
+        ('Beds', 'Beds'),
+        ('Seats', 'Seats'),
+        ('Tables', 'Tables'),
     )
 
     furniture_category = models.CharField(max_length=200,
                                           choices=furniture_category_choices,
                                           default='Choose',
                                           )
+
+    material_price = models.DecimalField(max_digits=7, decimal_places=2)
 
     def __str__(self):
         return self.furniture_name
@@ -58,21 +60,3 @@ class Tool(models.Model):
 
     def __str__(self):
         return self.tool_name
-
-
-class Material(models.Model):
-    nails, varnish, glass, fabrics, cushions = 'nails', 'varnish', 'glass', 'fabrics', 'cushions'
-    material_choices = (
-        (nails, 'Nails'),
-        (varnish, 'Varnish'),
-        (glass, 'Glass'),
-        (fabrics, 'Fabrics'),
-        (cushions, 'Cushions'),
-    )
-
-    material_name = models.CharField(max_length=100, choices=material_choices, default=nails)
-
-    per_unit_price = models.FloatField()
-
-    def __str__(self):
-        return self.material_name
