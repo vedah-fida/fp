@@ -35,12 +35,19 @@
 
          <!--content div-->
         <div id="content" class="col s12 m9 l9 fill-vertical">
+
             <!--heading-->
             {% block heading %}<h4>Carpenter Home</h4>{% endblock %}
 
             <!--order top navigation-->
-            {% block topnav %}{% endblock %}
-
+            <div class="l12 m12 s12">
+                <div class="col l3 m3 s12">
+                    <a href="{% url 'accounts:customer_registration' %}">Register Customer</a>
+                </div>
+                <div class="col l3 m3 s12">
+                    <a href="{% url 'accounts:view_customer' %}">View Customer</a>
+                </div>
+            </div>
             <!--content body-->
             {% block content %}{% endblock %}
         </div>

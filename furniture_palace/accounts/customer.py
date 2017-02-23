@@ -29,9 +29,9 @@ def save_customer(customer_name, customer_email, customer_tel_no, customer_addre
 
 
 # update customer record
-def update_customer_with_details(name, email, tel_no, address, physical_address):
+def update_customer_with_details(customer_id, name, email, tel_no, address, physical_address):
     # get customer to be updated
-    customer_to_update = Customer.objects.get(customer_email=email)
+    customer_to_update = Customer.objects.get(id=customer_id)
 
     # update customer with new values
     customer_to_update.customer_name = name

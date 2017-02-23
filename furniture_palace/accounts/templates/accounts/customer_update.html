@@ -11,10 +11,6 @@ Customer Update
 {% endblock %}
 
 {% block content %}
-        <div>
-            <a href="{% url 'accounts:customer_registration' %}">Register Customer</a>
-            <a href="{% url 'accounts:view_customer' %}">View Customer</a>
-        </div>
 
 
     <div><p style="color: red">{{ error_msg }}</p></div>
@@ -22,6 +18,7 @@ Customer Update
 
     <form action="{% url 'accounts:update_customer' %}" method="post">
         {% csrf_token %}
+        <input type = "hidden" name = "customer_id" value = "{{ customer.id }} " />
         <!--customer name field-->
         <div class = "row">
             <div class = "input-field col s12">

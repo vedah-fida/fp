@@ -60,13 +60,14 @@ def get_customer(request):
 
 
 def update_customer(request):
+    customer_id = request.POST['customer_id']
     customer_name = request.POST['customer_name']
     customer_email = request.POST['customer_email']
     customer_tel_no = request.POST['customer_tel']
     customer_address = request.POST['customer_address']
     customer_physical_address = request.POST['physical_address']
 
-    update_customer_with_details(customer_name, customer_email, customer_tel_no, customer_address, customer_physical_address)
+    update_customer_with_details(customer_id, customer_name, customer_email, customer_tel_no, customer_address, customer_physical_address)
     msg = "Customer edit successfull."
     customers = get_all_customers()
     return render(request, 'accounts/customer_view.html', locals())
