@@ -22,6 +22,7 @@ class OrderPaymentAdmin(admin.ModelAdmin):
         'order',
         'deposit',
         'balance',
+        'storage_fee',
     )
 
 

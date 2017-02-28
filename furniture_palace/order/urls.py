@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^assign_order_page/$', views.assign_order_page, name='assign_order_page'),
     url(r'^assign_order/$', views.take_order, name='take_order'),
     url(r'^assign_order_to_carpenter/$', views.assign_order, name='assign_order'),
+    url(r'^search_orders/$', views.search_order, name='search_order'),
 ]

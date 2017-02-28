@@ -24,6 +24,7 @@ class OrderPayment(models.Model):
 
     deposit = models.DecimalField(max_digits=10, decimal_places=2)
     balance = models.DecimalField(max_digits=10, decimal_places=2)
+    storage_fee = models.FloatField(default=0)
 
     def __str__(self):
         return str(self.order.id) + ", " + self.order.order_name

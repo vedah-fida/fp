@@ -13,7 +13,40 @@ Orders Furniture Palace
 <!--order top navigation-->
 
 {% block content %}
-    <p style="color: green">{{ msg }}</p>
+<br>
+<form action="{% url 'orders:search_order' %}" method="post">
+    {% csrf_token %}
+    <div class="col l7 m7 s12">
+    <table>
+        <tr>
+            <td>
+                <div class="input-field">
+                <select id="search_by" name="search_field" required>
+                    <option value="all" disabled selected>Search by...</option>
+                    <option value="order_name">order name</option>
+                    <option value="customer">customer</option>
+                    <option value="carpenter">carpenter</option>
+                    <option value="temp_carpenter">temp_carpenter</option>
+                </select>
+                </div>
+            </td>
+            <td>
+                <div class="input-field">
+                    <label for="search_query">search term</label>
+                    <input id="search_query" type="text" name="query" required/>
+                </div>
+            </td>
+            <td>
+                <button class="btn waves-effect waves-light" type="submit" name="action">
+                    <i class="material-icons center">search</i>
+                </button>
+            </td>
+        </tr>
+    </table>
+    </div>
+</form>
+<br>
+    <div class="col l12 m12 s12"><p style="color: green">{{ msg }}</p></div>
     <table class="bordered responsive-table highlight centered">
         <thead>
           <tr>
@@ -35,19 +68,7 @@ Orders Furniture Palace
                      </form>
                  </div>
               </th>
-              <th>
-                  <div class="input-field">
-                     <form action="{% url 'orders:customer_orders' %}" id="customer_form" method="post">
-                         {% csrf_token %}
-                        <select id="customer_select" name="customer_id">
-                          <option value="" disabled selected>customer</option>
-                          {% for customer in customers %}
-                            <option value="{{ customer.id }}">{{ customer.customer_name }}</option>
-                          {% endfor %}
-                        </select>
-                     </form>
-                 </div>
-              </th>
+              <th>Customer</th>
               <th>
                   <div class="input-field">
                      <form action="{% url 'orders:carpenter_orders' %}" id="carpenter_form" method="post">

@@ -53,6 +53,15 @@ def view_all_orders(request):
     return render(request, 'order/order_view.html', locals())
 
 
+def search_order(request):
+    search_query = request.POST['query']
+    search_field = request.POST['search_field']
+    customers = Customer.objects.all()
+    carpenters = User.objects.all().exclude(username="wolf")
+    orders = search_for_orders(search_query, search_field)
+    return render(request, 'order/order_view.html', locals())
+
+
 def view_orders_for_customer(request):
     customer_id = request.POST['customer_id']
     orders = get_orders_for(customer_id)
