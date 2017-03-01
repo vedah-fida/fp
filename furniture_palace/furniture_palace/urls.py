@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^', include('accounts.urls', namespace='accounts')),
     url(r'^furniture_palace/', include('catalog.urls', namespace='catalogs')),
     url(r'^furniture_palace/', include('order.urls', namespace='orders')),
+    url(r'^furniture_palace/', include('reports.urls', namespace='reports')),
 ]

@@ -7,7 +7,7 @@ class Order(models.Model):
     quantity = models.IntegerField()
     complete_status = models.BooleanField(default=False)
     order_date = models.DateField(auto_now_add=True)
-    order_price = models.DecimalField(max_digits=20, decimal_places=2, null=True)
+    order_price = models.FloatField(null=True)
     order_completion_date = models.DateField(null=True)
     customer = models.ForeignKey('accounts.Customer', null=False, unique=False)
     carpenter = models.ForeignKey(User, null=True, unique=False)

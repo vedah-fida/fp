@@ -8,6 +8,47 @@ def get_all_orders():
     return complete_orders
 
 
+def get_carpenter_orders(user):
+    carpenter_orders = Order.objects.filter(carpenter=user, temp_carpenter=None)
+    return carpenter_orders
+
+
+def get_carpenter_order_totals_commission(user):
+    profile = Profile.objects.get(carpenter=user)
+    carpenter_order_totals = 0
+    orders = get_carpenter_orders(user)
+    for order in orders:
+        carpenter_order_totals += (order.order_price * float(profile.commission / 100))
+    return carpenter_order_totals
+
+
+def get_assigned_orders(user):
+    assigned_orders = Order.objects.filter(carpenter=user).exclude(temp_carpenter=None)
+    return assigned_orders
+
+
+def get_assigned_order_totals_commission(user):
+    assigned_order_total = 0
+    orders = get_assigned_orders(user)
+    for order in orders:
+        assigned_order_total += (float(order.order_price) * 0.01)
+    return assigned_order_total
+
+
+def get_salary(user):
+    profile = Profile.objects.get(carpenter=user)
+    salary = profile.carpenter_salary
+
+    return salary
+
+def total_commission(user):
+    return float(get_assigned_order_totals_commission(user)) + float(get_carpenter_order_totals_commission(user))
+
+
+def carpenter_gross_salary(user):
+    return float(get_salary(user)) + total_commission(user)
+
+
 def get_orders_totals():
     order_totals = 0
     orders = get_all_orders()

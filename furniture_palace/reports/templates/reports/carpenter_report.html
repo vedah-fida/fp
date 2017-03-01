@@ -1,0 +1,113 @@
+<!doctype html>
+{% load report_tag %}
+<head>
+    <title>Carpenter Report</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+.col-sm-3, img{
+	height: 10em;
+}
+.col-sm-9, h2{
+	padding-top: 33px;
+}
+.container{
+	text-align: center;
+}
+h4,.double_underline{
+	border-bottom: 3px double;
+}
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5">
+            <img src="/static/img/fp_logo.png" alt="Furniture Palace Image Logo">
+        </div>
+        <div class="col-sm-7">
+            <h2>Gross Salary for {{ username }}</h2>
+        </div>
+    </div>
+</div>
+<div class="col-sm-2">
+</div>
+<div class="col-sm-9">
+    <div class="container-fluid">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Commission for Orders</th>
+                        <th>Commission Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c_order in carpenter_orders %}
+                    <tr>
+                        <td>{{ c_order.order_name }}</td>
+                        <td>{{ c_order.order_price|multiply:orders_commission|floatformat:2 }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td>No orders</td>
+                        <td>0.00</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>Commission for assigned Orders</th>
+                        <th>Commission Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a_order in assigned_orders %}
+                    <tr>
+                        <td>{{ a_order.order_name }}</td>
+                        <td>{{ a_order.order_price|multiply:assigned_order_commission|floatformat:2 }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td>No orders</td>
+                        <td>0.00</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>Salary</th>
+                        <th>Amount in Figures</th>
+                    </tr>
+                    <tr>
+                        <td>Basic Salary</td>
+                        <td>{{ salary }}</td>
+                    </tr>
+                </thead>
+                </tbody>
+                <tr>
+                    <ul class="list-group">
+                        <td>
+                            <li class="list-group-item active">GROSS SALARY</li>
+                        </td>
+                        <td name="carpenter_gross_pay">
+                            <h4 class="double_underline">{{ gross_salary }}</h4>
+                        </td>
+                    </ul>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+<div class="col-sm-3">
+</div>
+</body>
+</html>
