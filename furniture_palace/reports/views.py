@@ -28,5 +28,5 @@ def show_monthly_summary(request):
     carpenter_profiles = reports.get_carpenter_profiles()
     complete_orders = reports.get_all_complete_orders()
     carpenter_commission_totals = reports.get_carpenter_commissions_subtotals()
-    tempcarpenter_commission_totals = reports.get_temp_carpenter_commissions_subtotals()
+    temp_carpenter_commission_totals = reports.get_temp_carpenter_commissions_subtotals()
     return render(request, 'reports/monthly_report.html', locals())

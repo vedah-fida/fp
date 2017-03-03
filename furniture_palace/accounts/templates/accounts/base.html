@@ -29,7 +29,10 @@
                 <a href="{% url 'catalogs:lent_tools' %}">Tools</a>
             </div>
            <div class="action-item">
-                <a href="{% url 'reports:carpenter_payroll' %}">Payroll</a>
+               <!-- <a href="{% url 'reports:carpenter_payroll' %}"> My Payroll</a>-->
+               <a href="{% url 'reports:carpenter_payroll' %}"  data-toggle="modal" data-target="#myModal" id = "open">My Payroll</a>
+
+
             </div>
             <div class="action-item">
                 <a href="{% url 'reports:monthly_report' %}">Monthly Report</a>

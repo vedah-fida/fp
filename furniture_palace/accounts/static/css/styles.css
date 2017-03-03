@@ -1,0 +1,43 @@
+.col-sm-3, img{
+	height: 10em;
+}
+
+.container{
+	text-align: center;
+}
+h4,.double_underline{
+	border-bottom: 3px double;
+}
+#figures{
+	text-align:right;
+	
+}
+th{
+	height: 10px;
+	max-width: 20px;
+	text-align: left;
+}
+table, #main-table{
+	border-collapse: collapse;
+	border-spacing: 10px;
+}
+
+table,th, td{
+	border: 1px solid #ddd;
+}
+#second{
+	text-align:right;
+}
+ .btn btn-default {
+ 	align:left;
+ }
+ .btn btn-primary{
+ 	align:right;
+ }
+@media print{
+	.btn btn-primary, .btn btn-default, #open
+	{
+		display:none !important;
+		color: red;
+	}
+}
