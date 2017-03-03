@@ -4,6 +4,7 @@ from order.models import Order, OrderPayment
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
+        'id',
         'order_name',
         'order_date',
         'order_completion_date',
@@ -12,6 +13,7 @@ class OrderAdmin(admin.ModelAdmin):
         'customer',
         'carpenter',
     )
+    list_display_links = ('order_name',)
 
 
 admin.site.register(Order, OrderAdmin)
@@ -22,7 +24,11 @@ class OrderPaymentAdmin(admin.ModelAdmin):
         'order',
         'deposit',
         'balance',
+        'days_in_store',
         'storage_fee',
+        'delivery_fee',
+        'delivery_or_collection_date',
+        'delivered',
     )
 
 

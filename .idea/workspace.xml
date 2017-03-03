@@ -2,36 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f2c29ff-75b7-42ed-a0b4-94b54231d203" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/furniture_palace/accounts/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/furniture_palace/accounts/customer.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/furniture_palace/accounts/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/furniture_palace/accounts/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/furniture_palace/accounts/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/furniture_palace/accounts/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/furniture_palace/order/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/furniture_palace/order/order.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/furniture_palace/order/urls.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/furniture_palace/fp/admin.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/furniture_palace/fp/fp_users.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/furniture_palace/fp/models.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/furniture_palace/fp/views.py" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/furniture_palace/fp/__init__.py" afterPath="$PROJECT_DIR$/furniture_palace/accounts/__init__.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/furniture_palace/fp/apps.py" afterPath="$PROJECT_DIR$/furniture_palace/accounts/apps.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/furniture_palace/fp/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/furniture_palace/accounts/migrations/0001_initial.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/furniture_palace/fp/migrations/0002_auto_20170214_2037.py" afterPath="$PROJECT_DIR$/furniture_palace/accounts/migrations/0002_auto_20170214_2037.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/furniture_palace/fp/migrations/__init__.py" afterPath="$PROJECT_DIR$/furniture_palace/accounts/__init__.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/furniture_palace/fp/templates/fp/carpenter_home.html" afterPath="$PROJECT_DIR$/furniture_palace/accounts/templates/accounts/carpenter_home.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/furniture_palace/fp/templates/fp/carpenter_login.html" afterPath="$PROJECT_DIR$/furniture_palace/accounts/templates/accounts/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/furniture_palace/fp/templates/fp/carpenter_payments.html" afterPath="$PROJECT_DIR$/furniture_palace/accounts/templates/accounts/carpenter_payments.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/furniture_palace/fp/templates/fp/lend_tool.html" afterPath="$PROJECT_DIR$/furniture_palace/accounts/templates/accounts/lend_tool.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/furniture_palace/fp/templates/fp/make_order.html" afterPath="$PROJECT_DIR$/furniture_palace/order/templates/order/make_order.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/furniture_palace/fp/templates/fp/register_customer.html" afterPath="$PROJECT_DIR$/furniture_palace/accounts/templates/accounts/register_customer.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/furniture_palace/fp/tests.py" afterPath="$PROJECT_DIR$/furniture_palace/accounts/tests.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/furniture_palace/fp/urls.py" afterPath="$PROJECT_DIR$/furniture_palace/accounts/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/furniture_palace/db.sqlite3" afterPath="$PROJECT_DIR$/furniture_palace/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/furniture_palace/furniture_palace/settings.py" afterPath="$PROJECT_DIR$/furniture_palace/furniture_palace/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/furniture_palace/furniture_palace/urls.py" afterPath="$PROJECT_DIR$/furniture_palace/furniture_palace/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/furniture_palace/.idea/workspace.xml" afterPath="$PROJECT_DIR$/furniture_palace/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -52,7 +24,7 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/furniture_palace/furniture_palace/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
+            <state relative-caret-position="432">
               <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
                 <element signature="e#650#691#0" expanded="true" />
@@ -64,7 +36,7 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/furniture_palace/order/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
+            <state relative-caret-position="108">
               <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
@@ -76,7 +48,7 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/furniture_palace/furniture_palace/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
+            <state relative-caret-position="702">
               <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding />
             </state>
@@ -95,14 +67,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="order.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="order.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/furniture_palace/order/order.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+            <state relative-caret-position="378">
+              <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#0#44#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/furniture_palace/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="227">
+              <caret line="739" column="0" selection-start-line="738" selection-start-column="0" selection-end-line="739" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -114,18 +96,6 @@
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="make_order.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/furniture_palace/order/templates/order/make_order.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-              <folding>
-                <element signature="n#style#0;n#p#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -194,10 +164,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="256" />
-    <option name="y" value="264" />
-    <option name="width" value="1018" />
-    <option name="height" value="657" />
+    <option name="x" value="43" />
+    <option name="y" value="109" />
+    <option name="width" value="1280" />
+    <option name="height" value="571" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -224,6 +194,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -256,14 +228,30 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="furniture_palace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../bikes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/furniture_palace" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
@@ -430,12 +418,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="256" y="264" width="1018" height="657" extended-state="0" />
-    <editor active="false" />
+    <frame x="43" y="109" width="1280" height="571" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32121807" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32109374" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739422" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266129" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266129" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -447,7 +436,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32735425" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -489,13 +477,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/furniture_palace/accounts/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/furniture_palace/accounts/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -665,52 +646,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="62" column="6" selection-start-line="62" selection-start-column="6" selection-end-line="62" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/furniture_palace/accounts/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/furniture_palace/order/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/furniture_palace/accounts/templates/accounts/carpenter_home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="66" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/furniture_palace/accounts/templates/accounts/carpenter_payments.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="66" selection-start-line="11" selection-start-column="66" selection-end-line="11" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/furniture_palace/accounts/templates/accounts/register_customer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="66" selection-start-line="11" selection-start-column="66" selection-end-line="11" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/furniture_palace/accounts/templates/accounts/lend_tool.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="70" selection-start-line="11" selection-start-column="70" selection-end-line="11" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/furniture_palace/accounts/forms.py" />
+    <entry file="file://$PROJECT_DIR$/furniture_palace/order/forms.py" />
+    <entry file="file://$PROJECT_DIR$/furniture_palace/accounts/templates/accounts/carpenter_home.html" />
+    <entry file="file://$PROJECT_DIR$/furniture_palace/accounts/templates/accounts/carpenter_payments.html" />
+    <entry file="file://$PROJECT_DIR$/furniture_palace/accounts/templates/accounts/register_customer.html" />
+    <entry file="file://$PROJECT_DIR$/furniture_palace/accounts/templates/accounts/lend_tool.html" />
     <entry file="file://$PROJECT_DIR$/furniture_palace/accounts/templates/accounts/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -720,7 +664,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/furniture_palace/furniture_palace/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
+        <state relative-caret-position="432">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
             <element signature="e#650#691#0" expanded="true" />
@@ -730,7 +674,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/furniture_palace/order/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
+        <state relative-caret-position="108">
           <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
@@ -758,47 +702,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/furniture_palace/order/templates/order/make_order.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/furniture_palace/order/templates/order/make_order.html" />
     <entry file="file://$PROJECT_DIR$/furniture_palace/furniture_palace/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
+        <state relative-caret-position="702">
           <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/furniture_palace/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/furniture_palace/__init__.py" />
     <entry file="file://$PROJECT_DIR$/furniture_palace/order/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/furniture_palace/order/order.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+        <state relative-caret-position="378">
+          <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#44#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/furniture_palace/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="739" column="0" selection-start-line="738" selection-start-column="0" selection-end-line="739" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

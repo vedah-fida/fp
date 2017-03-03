@@ -1,0 +1,225 @@
+<!doctype html>
+<head>
+    <title>Monthly Report</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+.col-sm-3, img{
+	height: 10em;
+}
+.col-sm-9, h2{
+	padding-top: 33px;
+}
+.container{
+	text-align: center;
+}
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5">
+            <img src="/static/img/fp_logo.png" alt="Furniture Palace">
+        </div>
+        <div class="col-sm-7">
+            <h2>April 2017 Monthly Report</h2>
+        </div>
+    </div>
+</div>
+<div class="col-sm-2">
+</div>
+<div class="col-sm-9">
+    <div class="container-fluid">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <ul class="list-group">
+                        <td><h3><strong>SUMMARY</strong></h3></td>
+                    </ul>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Damage Fees</td>
+                    <td name="total_damage_fee">Pending</td>
+                </tr>
+                <tr>
+                    <td>Salaries</td>
+                    <td name="total_salaries">{{ salary_totals }}</td>
+                </tr>
+                <tr>
+                    <td>Orders(complete)</td>
+                    <td name="total_orders">{{ orders_totals|floatformat:2 }}</td>
+                </tr>
+                <tr>
+                    <td>Commissions</td>
+                    <td name="total_commissions">{{ commission_totals|floatformat:2 }}</td>
+                </tr>
+                <tr>
+                    <td>Storage Fees</td>
+                    <td name="total_storage_fee">Pending</td>
+                </tr>
+                <tr>
+                    <td>Tool Lending Fee</td>
+                    <td name="total_lending_fee">Pending</td>
+                </tr>
+                </tbody>
+                <tr>
+                    <th>TOTAL</th>
+                    <th name="total_report_amount">AMOUNT IN FIGURES</th>
+                </tr>
+                <thead>
+                <tr>
+                    <ul class="list-group">
+                        <td><h3><strong>DETAILED REPORT</strong></h3></td>
+                    </ul>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><h4><strong>Damages</strong></h4></td>
+                </tr>
+                <tr>
+                    <td>Tool X</td>
+                    <td name="damaged_tool_fee">pending</td>
+                </tr>
+                <tr>
+                    <td>Tool Y</td>
+                    <td>pending</td>
+                </tr>
+                </tbody>
+
+
+                <tr>
+                    <th>Total Damage Fee</th>
+                    <th name="total_damage_fee">Amount in Figures</th>
+                </tr>
+
+                <tbody>
+
+                <tr>
+                    <td><h4><strong>Salaries</strong></h4></td>
+                </tr>
+                {% for profile in carpenter_profiles %}
+                <tr>
+                    <td>{{ profile.carpenter }}</td>
+                    <td name="carpenter_y_salary">{{ profile.carpenter_salary }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+                <tr>
+                    <th>Total Salaries</th>
+                    <th name="total_salaries">{{ salary_totals }}</th>
+                </tr>
+
+                <tbody>
+
+                <tr>
+                    <td><h4><strong>Complete Orders</strong></h4></td>
+                </tr>
+                {% for order in complete_orders %}
+                <tr>
+                    <td>{{ order.order_name }}</td>
+                    <td name="order_price">{{ order.order_price }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+                <tr>
+                    <th>Total Order Fee</th>
+                    <th name="total_orders">{{ orders_totals|floatformat:2 }}</th>
+                </tr>
+                <tbody>
+
+                <tr>
+                    <td><h4><strong>Commissions</strong></h4></td>
+                </tr>
+                <tr>
+                    <!-- for more details, inherit form from carpenter report-->
+                    <td>Main Carpenters</td>
+                    <td name="total_permanent_carpenter_commissions">{{ carpenter_commission_totals|floatformat:2 }}
+                    </td>
+                </tr>
+                <tr>
+                    <!-- for more details, inherit form from temp-carpenter report-->
+
+                    <td>Temporary Carpenters</td>
+                    <td name name="total_temp_carpenter_commission">{{ tempcarpenter_commission_totals|floatformat:2
+                        }}
+                    </td>
+                </tr>
+                </tbody>
+                <tr>
+                    <th>Total Commissions</th>
+                    <th name="main_and_temp_carp_commissions">{{ commission_totals|floatformat:2 }}</th>
+                </tr>
+                <tbody>
+
+                <tr>
+                    <td><h4><strong>Storage Fee</strong></h4></td>
+                </tr>
+                <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Days Extended</th>
+                    <th>Total Charge</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td name="delayed_order_name">Double Decker</td>
+                    <td name="extended_days">18</td>
+                    <td name="delayed_order_price">5000</td>
+                </tr>
+
+                </tbody>
+                <tr>
+                    <th>Total Storage Fee</th>
+                    <th name="total_storage_fee">Amount in Figures</th>
+                </tr>
+                <tbody>
+
+                <tr>
+                    <td><h4><strong>Lending Fee</strong></h4></td>
+                </tr>
+                <tr>
+                    <td name="tool_name">Tool A</td>
+                    <td name="lending_fee">4242</td>
+                </tr>
+                <tr>
+                    <td>Tool B</td>
+                    <td>6122</td>
+                </tr>
+                </tbody>
+                <tr>
+                    <th>Total Lending Fee</th>
+                    <th name="total_lending_fee">Amount in Figures</th>
+                </tr>
+
+
+                <tr>
+                    <ul class="list-group">
+                        <td>
+                            <li class="list-group-item active">TOTALS</li>
+                        </td>
+                        <td name="total_report_amount">
+                            <li class="list-group-item active">AMOUNT</li>
+                        </td>
+                    </ul>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+<div class="col-sm-3">
+</div>
+</body>
+</html>

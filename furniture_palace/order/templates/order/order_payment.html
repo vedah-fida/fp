@@ -1,0 +1,55 @@
+{% extends "./base.html" %}
+
+{% block title %}
+Orders Furniture Palace
+{% endblock %}
+
+{% block heading %}
+<div class="heading">
+    <h4>Orders.</h4>
+</div>
+{% endblock %}
+
+<!--order top navigation-->
+
+
+
+{% block content %}
+<br>
+<div class="col l6 m6 s12">
+    <h5>Order Info</h5>
+    <p>{{ order_payment.order }} for {{ order_payment.order.customer }}</p>
+    <p>Deposit: {{ order_payment.deposit|floatformat:2 }}</p>
+    <p>Balance: {{ order_payment.balance|floatformat:2  }}</p>
+    <p>Total: {{ order_payment.order.order_price|floatformat:2  }}</p>
+</div>
+<div class="col l6 m6 s12">
+    <h5>Customer Info</h5>
+    <p>Customer Address: {{ order_payment.order.customer.customer_address }}</p>
+    <p>Physical dress: {{ order_payment.order.customer.customer_physical_address }}</p>
+</div>
+
+<div class="col l12 m12 s12"><p>Delivery Info</p></div>
+<div class="col l12 m12 s12">
+    <form action="{% url 'orders:order_update' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="order" value="{{ order_payment.order.id }}">
+        <div class="input-field col l6 m6 s12">
+              <label for="amount_paid">Amount</label>
+              <input id="amount_paid" type="number" class="validate" name="paid_amount" required/>
+        </div>
+        <div class="input-field col l6 m6 s12">
+            <select name="delivery" required>
+                <option value="" selected disabled>Delivery...</option>
+                <option value="personal">Personal Carriage</option>
+                <option value="Nairobi">Nairobi</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="col l12 m12 s12">
+            <input type="submit" value="make update" class="btn waves-effect waves-light"/>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

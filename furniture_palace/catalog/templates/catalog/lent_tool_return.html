@@ -1,0 +1,40 @@
+{% extends "./base.html" %}
+{% block heading %}
+<div class="heading">
+    <h4>Tools.</h4>
+</div>
+{% endblock %}
+
+{% block content%}
+<div class="col l12 m12 s12"><p style="color: green">{{ msg }}</p></div>
+<div class="row">
+     <h5>Lent Tool Info</h5>
+    <p>Tool Name: {{ lent_tool.tool }}</p>
+    <p>Lent To: {{ lent_tool.temp_carpenter }}</p>
+    <p>Lend Date: {{ lent_tool.lend_date }}</p>
+</div>
+
+<div class="row">
+    <form action="{% url 'catalogs:update_lent_tool' %}" method="post">
+        {% csrf_token %}
+        <div class="input-field col l6 m6 s12">
+            <select name="returned" required>
+                <option value="" selected disabled>Returned ...</option>
+                <option value=True>Yes</option>
+                <option value=False>No</option>
+            </select>
+        </div>
+        <div class="input-field col l6 m6 s12">
+            <select name="damaged" required>
+                <option value="" selected disabled>Damaged ...</option>
+                <option value=True>Yes</option>
+                <option value=False>No</option>
+            </select>
+        </div>
+        <div class="col l6 m6 s12">
+            <input type="hidden" name="lend_id" value="{{ lent_tool.id }}">
+            <input type="submit" value="update" />
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -3,5 +3,5 @@ from reports import views
 
 urlpatterns = [
     url(r'^carpenter_payroll_summary/$', views.show_carpenter_summary, name='carpenter_payroll'),
-    # url(r'^monthly_summary/$',),
+    url(r'^monthly_summary/$', views.show_monthly_summary, name="monthly_report"),
 ]

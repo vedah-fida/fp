@@ -13,4 +13,7 @@ urlpatterns = [
     url(r'^assign_order/$', views.take_order, name='take_order'),
     url(r'^assign_order_to_carpenter/$', views.assign_order, name='assign_order'),
     url(r'^search_orders/$', views.search_order, name='search_order'),
+    url(r'^order_payments/$', views.show_payment_list, name='payment_list'),
+    url(r'^order_update_page/$', views.show_order_payment, name='order_update_page'),
+    url(r'^order_update/$', views.update_order, name='order_update'),
 ]

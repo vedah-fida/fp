@@ -1,0 +1,59 @@
+{% extends "./base.html" %}
+{% block heading %}
+<div class="heading">
+    <h4>Tools.</h4>
+</div>
+{% endblock %}
+
+{% block content%}
+<div class="col l12 m12 s12"><p style="color: green">{{ msg }}</p></div>
+
+<table class="highlight bordered responsive">
+    <thead>
+        <tr>
+            <th>tool name</th>
+            <th>temp carpenter</th>
+            <th style="text-align: center">lend date</th>
+            <th style="text-align: center">return date</th>
+            <th style="text-align: center">lending fee</th>
+            <th>days with tool</th>
+            <th>returned</th>
+            <th>was damaged</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for lent_tool in lent_tools %}
+        <tr>
+            <td>{{ lent_tool.tool }}</td>
+            <td>{{ lent_tool.temp_carpenter }}</td>
+            <td>{{ lent_tool.lend_date }}</td>
+            <td style="text-align: center">{{ lent_tool.return_date }}</td>
+            <td style="text-align: right">{{ lent_tool.lending_fee|floatformat:2 }}</td>
+            <td style="text-align: center">
+                {% if lent_tool.days_with_tool is None %}
+                    N/A
+                {% else %}
+                    {{lent_tool.days_with_tool}}
+                {% endif %}
+            </td>
+            <td>
+                {% if lent_tool.returned is True %}
+                    <strong style="color:green">Yes</strong>
+                {% else %}
+                    <strong style="color:red">No</strong>
+                {% endif %}
+            </td>
+            <td>
+                {% if lent_tool.was_damaged is True %}
+                    <strong style="color:green">Yes</strong> (Fee: {{ lent_tool.tool.damage_fee|floatformat:2 }})
+                {% elif lent_tool.was_damaged is False %}
+                    <strong style="color:red">No</strong>
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

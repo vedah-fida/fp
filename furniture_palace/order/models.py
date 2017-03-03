@@ -14,7 +14,7 @@ class Order(models.Model):
     temp_carpenter = models.ForeignKey('accounts.TempCarpenter', null=True, unique=False)
 
     def __str__(self):
-        return str(self.id) + ", " + self.order_name
+        return "Order Id " + str(self.id) + " | " + self.order_name
 
 
 class OrderPayment(models.Model):
@@ -22,9 +22,13 @@ class OrderPayment(models.Model):
                                  on_delete=models.CASCADE,
                                  primary_key=True)
 
-    deposit = models.DecimalField(max_digits=10, decimal_places=2)
-    balance = models.DecimalField(max_digits=10, decimal_places=2)
-    storage_fee = models.FloatField(default=0)
+    deposit = models.FloatField()
+    balance = models.FloatField()
+    days_in_store = models.IntegerField(default=0)
+    storage_fee = models.FloatField(default=0.00)
+    delivery_fee = models.FloatField(default=0.00)
+    delivery_or_collection_date = models.DateField(null=True)
+    delivered = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.order.id) + ", " + self.order.order_name

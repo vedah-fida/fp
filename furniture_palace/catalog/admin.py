@@ -15,3 +15,16 @@ class ToolAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Tool, ToolAdmin)
+
+
+class LentToolAdmin(admin.ModelAdmin):
+    list_display = (
+        'tool',
+        'temp_carpenter',
+        'lend_date',
+        'return_date',
+        'lending_fee',
+    )
+
+
+admin.site.register(LentTool, LentToolAdmin)

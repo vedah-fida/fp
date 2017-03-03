@@ -1,9 +1,9 @@
 from order.models import Order, OrderPayment
-from accounts.models import User, Profile
-from reports.models import LentTool
+from accounts.models import Profile
+from catalog.models import LentTool
 
 
-def get_all_orders():
+def get_all_complete_orders():
     complete_orders = Order.objects.filter(complete_status=True)
     return complete_orders
 
@@ -41,6 +41,7 @@ def get_salary(user):
 
     return salary
 
+
 def total_commission(user):
     return float(get_assigned_order_totals_commission(user)) + float(get_carpenter_order_totals_commission(user))
 
@@ -51,15 +52,15 @@ def carpenter_gross_salary(user):
 
 def get_orders_totals():
     order_totals = 0
-    orders = get_all_orders()
+    orders = get_all_complete_orders()
     for order in orders:
         order_totals += order.order_price
     return order_totals
 
 
-def get_carpenters():
-    carpenters = User.objects.exclude(username="wolf")
-    return carpenters
+def get_carpenter_profiles():
+    carpenter_profiles = Profile.objects.all()
+    return carpenter_profiles
 
 
 def get_salary_totals():
@@ -76,7 +77,7 @@ def get_carpenter_commissions_subtotals():
 
     supervised_commission_totals, carpenter_commission_totals = 0, 0
     carpenter_orders = Order.objects.filter(complete_status=True, temp_carpenter=None)
-    supervised_orders = Order.objects.filter(completer_status=True).exclude(temp_carpenter=None)
+    supervised_orders = Order.objects.filter(complete_status=True).exclude(temp_carpenter=None)
     for carpenter_order in carpenter_orders:
         carpenter_commission_totals += (carpenter_order.order_price * (commission_percentage / 100))
 
@@ -89,7 +90,7 @@ def get_carpenter_commissions_subtotals():
 def get_temp_carpenter_commissions_subtotals():
     temp_carpenter_commission_totals = 0
     temp_carpenter_commission_percentage = 3
-    assigned_orders = Order.objects.filter(completer_status=True).exclude(temp_carpenter=None)
+    assigned_orders = Order.objects.filter(complete_status=True).exclude(temp_carpenter=None)
     for order in assigned_orders:
         temp_carpenter_commission_totals += (order.order_price * (temp_carpenter_commission_percentage / 100))
     return temp_carpenter_commission_totals

@@ -3,8 +3,6 @@ from reports import reports
 from accounts.models import Profile
 
 
-
-# Create your views here.
 def show_carpenter_summary(request):
     carpenter_orders = reports.get_carpenter_orders(request.user)
     carpenter_orders_commission_total = reports.get_carpenter_order_totals_commission(request.user)
@@ -16,3 +14,19 @@ def show_carpenter_summary(request):
     orders_commission = float(0.02)
     assigned_order_commission = float(0.01)
     return render(request, 'reports/carpenter_report.html', locals())
+
+
+def show_monthly_summary(request):
+    # damage_fees(pending)
+    # storage_fees(pending)
+    # lending_fees(pending)
+    # delivery_fees(pending)
+    salary_totals = reports.get_salary_totals()
+    orders_totals = reports.get_orders_totals()
+    commission_totals = reports.get_commissions_grand_totals()
+
+    carpenter_profiles = reports.get_carpenter_profiles()
+    complete_orders = reports.get_all_complete_orders()
+    carpenter_commission_totals = reports.get_carpenter_commissions_subtotals()
+    tempcarpenter_commission_totals = reports.get_temp_carpenter_commissions_subtotals()
+    return render(request, 'reports/monthly_report.html', locals())

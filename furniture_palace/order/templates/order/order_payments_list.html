@@ -1,0 +1,47 @@
+{% extends "./base.html" %}
+
+{% block title %}
+Orders Furniture Palace
+{% endblock %}
+
+{% block heading %}
+<div class="heading">
+    <h4>Orders.</h4>
+</div>
+{% endblock %}
+
+<!--order top navigation-->
+
+
+
+{% block content %}
+<p style="color: green">{{ msg }}</p>
+<br>
+<table>
+    <thead>
+        <tr>
+            <td>order id | order name</td>
+            <td>order customer</td>
+            <td>order deposit</td>
+            <td>order balance</td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for order_payment in order_payments %}
+        <tr>
+            <td>{{ order_payment.order }}</td>
+            <td>{{ order_payment.order.customer }}</td>
+            <td>{{ order_payment.deposit }}</td>
+            <td>{{ order_payment.balance }}</td>
+            <td>
+                <form action="{% url 'orders:order_update_page' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="order" value="{{ order_payment.order.id }}"/>
+                    <button type="submit">update</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

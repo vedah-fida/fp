@@ -1,11 +1,12 @@
 from django.db import models
+from accounts.models import TempCarpenter
 
 
 # Create your models here.
 class Furniture(models.Model):
     # bed options
-    double = 'Double'
-    single = 'Single'
+    double = 'Double Bed'
+    single = 'Single Bed'
     double_decker = 'Double Decker'
     # table options
     coffee = 'Coffee Table'
@@ -56,7 +57,22 @@ class Furniture(models.Model):
 
 class Tool(models.Model):
     tool_name = models.CharField(max_length=250)
-    lending_rate_per_day = models.DecimalField(max_digits=7, decimal_places=2)
+    lending_rate_per_day = models.FloatField()
+    damage_fee = models.FloatField(default=0.00)
 
     def __str__(self):
         return self.tool_name
+
+
+class LentTool(models.Model):
+    tool = models.ForeignKey(Tool)
+    temp_carpenter = models.ForeignKey(TempCarpenter)
+    lend_date = models.DateField(auto_now_add=True)
+    return_date = models.DateField(null=True)
+    days_with_tool = models.IntegerField(null=True)
+    lending_fee = models.FloatField(default=0.00)
+    returned = models.NullBooleanField()
+    was_damaged = models.NullBooleanField()
+
+    def __str__(self):
+        return self.tool.tool_name + "<->" + self.temp_carpenter.temp_carpenter_name

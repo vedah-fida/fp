@@ -1,3 +1,4 @@
+import datetime
 from order.models import Order, OrderPayment
 from accounts.models import Customer
 from django.contrib.auth.models import User
@@ -35,7 +36,8 @@ def change_order_status(order_id, status):
 
     # change status of order
     order.complete_status = status
-
+    # register date of completion
+    order.order_completion_date = datetime.datetime.now().date()
     # save change
     order.save()
 

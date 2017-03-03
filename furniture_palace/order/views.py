@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from catalog.models import Furniture
 from order.order import *
+from order.order_payments import *
 from django.contrib.auth.models import User
 from accounts.models import Customer, TempCarpenter
 
@@ -149,3 +150,25 @@ def edit_order(request):
 
 def delete_order(request):
     pass
+
+
+def show_payment_list(request):
+    order_payments = get_undelivered_order_payments()
+    return render(request, 'order/order_payments_list.html', locals())
+
+
+def show_order_payment(request):
+    order = request.POST['order']
+    order_payment = get_order_payment(order)
+    return render(request, 'order/order_payment.html', locals())
+
+
+def update_order(request):
+    order_id = request.POST['order']
+    paid_amount = float(request.POST['paid_amount'])
+    delivery = request.POST['delivery']
+    update_order_payment(order_id, paid_amount, delivery)
+
+    msg = "Update was made successfully."
+    order_payments = get_undelivered_order_payments()
+    return render(request, 'order/order_payments_list.html', locals())

@@ -1,0 +1,45 @@
+{% extends "./base.html" %}
+{% block heading %}
+<div class="heading">
+    <h4>Tools.</h4>
+</div>
+{% endblock %}
+
+{% block content%}
+<div class="col l12 m12 s12"><p style="color: green">{{ msg }}</p></div>
+
+<table class="highlight bordered responsive">
+    <thead>
+        <tr>
+            <th>tool name</th>
+            <th>temp carpenter</th>
+            <th>lend date</th>
+            <th>returned</th>
+            <th>action</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for lent_tool in lent_tools %}
+        <tr>
+            <td>{{ lent_tool.tool }}</td>
+            <td>{{ lent_tool.temp_carpenter }}</td>
+            <td>{{ lent_tool.lend_date }}</td>
+            <td>
+                {% if lent_tool.returned is True %}
+                    <strong style="color:green">Yes</strong>
+                {% else %}
+                    <strong style="color:red">No</strong>
+                {% endif %}
+            </td>
+            <td>
+                <form action="{% url 'catalogs:lent_tool_return_page' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="lend_tool" value="{{ lent_tool.id }}"/>
+                    <button type="submit">update</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
