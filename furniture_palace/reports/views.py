@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from reports import reports
-from accounts.models import Profile
+from catalog.catalog import get_returned_lent_tools
 
 
 def show_carpenter_summary(request):
@@ -17,14 +17,18 @@ def show_carpenter_summary(request):
 
 
 def show_monthly_summary(request):
-    # damage_fees(pending)
-    # storage_fees(pending)
     # lending_fees(pending)
     # delivery_fees(pending)
     salary_totals = reports.get_salary_totals()
     orders_totals = reports.get_orders_totals()
     commission_totals = reports.get_commissions_grand_totals()
+    damage_fee_totals = reports.get_total_tool_damage_fees()
+    storage_fee_totals = reports.get_total_storage_fees()
+    lending_fee_totals = reports.get_total_lending_fees()
 
+    lent_tools = get_returned_lent_tools()
+    orders_with_storage_fee = reports.get_orders_with_storage_fee()
+    damaged_tools = reports.get_damaged_tools()
     carpenter_profiles = reports.get_carpenter_profiles()
     complete_orders = reports.get_all_complete_orders()
     carpenter_commission_totals = reports.get_carpenter_commissions_subtotals()

@@ -100,17 +100,35 @@ def get_commissions_grand_totals():
     return get_carpenter_commissions_subtotals() + get_temp_carpenter_commissions_subtotals()
 
 
-def get_tool_damage_fees():
+def get_total_tool_damage_fees():
     damage_fee_totals = 0
-    lent_tools = LentTool.objects.all()
+    lent_tools = LentTool.objects.all().filter(was_damaged=True)
     for lent_tool in lent_tools:
-        damage_fee_totals += lent_tool.damage_fee
+        damage_fee_totals += lent_tool.tool.damage_fee
     return damage_fee_totals
 
 
-def get_storage_fees():
+def get_total_storage_fees():
     storage_fee_totals = 0
-    order_payments = OrderPayment.objects.all()
+    order_payments = OrderPayment.objects.all().exclude(days_in_store=0)
     for order_payment in order_payments:
         storage_fee_totals += order_payment.storage_fee
     return storage_fee_totals
+
+
+def get_total_lending_fees():
+    lending_total_fee = 0
+    lent_tools = LentTool.objects.all().filter(returned=True)
+    for lent_tool in lent_tools:
+        lending_total_fee += lent_tool.lending_fee
+    return lending_total_fee
+
+
+def get_damaged_tools():
+    damaged_tools = LentTool.objects.all().filter(was_damaged=True)
+    return damaged_tools
+
+
+def get_orders_with_storage_fee():
+    orders = OrderPayment.objects.all().exclude(days_in_store=0)
+    return orders

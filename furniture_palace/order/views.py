@@ -40,7 +40,7 @@ def change_complete_status(request):
     order_number = request.POST['order_id']
     status = request.POST['order_status']
     change_order_status(order_number, status)
-    orders = get_all_orders()
+    orders = get_started_orders()
     customers = Customer.objects.all()
     carpenters = User.objects.all().exclude(username="wolf")
     msg = 'Complete status for order with order id ' + order_number + ' successfully changed.'
@@ -48,7 +48,7 @@ def change_complete_status(request):
 
 
 def view_all_orders(request):
-    orders = get_all_orders()
+    orders = get_started_orders()
     customers = Customer.objects.all()
     carpenters = User.objects.all().exclude(username="wolf")
     return render(request, 'order/order_view.html', locals())
@@ -84,7 +84,7 @@ def view_complete_status_orders(request):
         carpenters = User.objects.all().exclude(username="wolf")
         return render(request, 'order/order_view.html', locals())
     else:
-        orders = get_all_orders()
+        orders = get_started_orders()
         customers = Customer.objects.all()
         carpenters = User.objects.all().exclude(username="wolf")
         return render(request, 'order/order_view.html', locals())

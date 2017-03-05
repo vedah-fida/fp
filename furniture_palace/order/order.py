@@ -56,7 +56,7 @@ def get_complete_orders():
 
 
 def get_incomplete_orders():
-    orders = Order.objects.filter(complete_status=False).order_by('-order_date')
+    orders = Order.objects.filter(complete_status=False).exclude(carpenter=None).order_by('-order_date')
     return orders
 
 
@@ -64,6 +64,11 @@ def get_incomplete_orders():
 def get_all_orders():
     orders = Order.objects.all().order_by('-order_date')
     # return all orders
+    return orders
+
+
+def get_started_orders():
+    orders = Order.objects.all().exclude(carpenter=None)
     return orders
 
 

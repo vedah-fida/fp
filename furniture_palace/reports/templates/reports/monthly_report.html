@@ -49,11 +49,11 @@
                 <tbody>
                 <tr>
                     <td>Damage Fees</td>
-                    <td name="total_damage_fee">Pending</td>
+                    <td name="total_damage_fee">{{ damage_fee_totals|floatformat:2 }}</td>
                 </tr>
                 <tr>
                     <td>Salaries</td>
-                    <td name="total_salaries">{{ salary_totals }}</td>
+                    <td name="total_salaries">{{ salary_totals|floatformat:2 }}</td>
                 </tr>
                 <tr>
                     <td>Orders(complete)</td>
@@ -65,11 +65,11 @@
                 </tr>
                 <tr>
                     <td>Storage Fees</td>
-                    <td name="total_storage_fee">Pending</td>
+                    <td name="total_storage_fee">{{ storage_fee_totals|floatformat:2 }}</td>
                 </tr>
                 <tr>
                     <td>Tool Lending Fee</td>
-                    <td name="total_lending_fee">Pending</td>
+                    <td name="total_lending_fee">{{ lending_fee_totals|floatformat:2 }}</td>
                 </tr>
                 </tbody>
                 <tr>
@@ -87,20 +87,23 @@
                 <tr>
                     <td><h4><strong>Damages</strong></h4></td>
                 </tr>
+                {% for damaged_tool in damaged_tools %}
                 <tr>
-                    <td>Tool X</td>
-                    <td name="damaged_tool_fee">pending</td>
+                    <td>{{ damaged_tool.tool }}</td>
+                    <td>{{ damaged_tool.tool.damage_fee }}</td>
                 </tr>
+                {% empty %}
                 <tr>
-                    <td>Tool Y</td>
-                    <td>pending</td>
+                    <td>No damaged tools</td>
+                    <td>0.00</td>
                 </tr>
+                {% endfor %}
                 </tbody>
 
 
                 <tr>
                     <th>Total Damage Fee</th>
-                    <th name="total_damage_fee">Amount in Figures</th>
+                    <th>{{ damage_fee_totals|floatformat:2 }}</th>
                 </tr>
 
                 <tbody>
@@ -172,34 +175,44 @@
                     <th>Total Charge</th>
                 </tr>
                 </thead>
+                <tbody>
+                {% for order in orders_with_storage_fee %}
                 <tr>
-                    <td name="delayed_order_name">Double Decker</td>
-                    <td name="extended_days">18</td>
-                    <td name="delayed_order_price">5000</td>
+                    <td name="delayed_order_name">{{order.order}}</td>
+                    <td name="extended_days">{{ order.days_in_store }}</td>
+                    <td name="delayed_order_price">{{ order.storage_fee }}</td>
                 </tr>
-
+                {% empty %}
+                <tr>
+                    <td>No orders with storage fee</td>
+                    <td>0.00</td>
+                </tr>
+                {% endfor%}
                 </tbody>
                 <tr>
                     <th>Total Storage Fee</th>
-                    <th name="total_storage_fee">Amount in Figures</th>
+                    <th name="total_storage_fee">{{ storage_fee_totals|floatformat:2 }}</th>
                 </tr>
                 <tbody>
 
                 <tr>
                     <td><h4><strong>Lending Fee</strong></h4></td>
                 </tr>
+                {% for lent_tool in lent_tools %}
                 <tr>
-                    <td name="tool_name">Tool A</td>
-                    <td name="lending_fee">4242</td>
+                    <td name="tool_name">{{ lent_tool.tool }}</td>
+                    <td name="lending_fee">{{ lent_tool.lending_fee }}</td>
                 </tr>
+                {% empty %}
                 <tr>
-                    <td>Tool B</td>
-                    <td>6122</td>
+                    <td>No lent tools</td>
+                    <td>0.00</td>
                 </tr>
+                {% endfor %}
                 </tbody>
                 <tr>
                     <th>Total Lending Fee</th>
-                    <th name="total_lending_fee">Amount in Figures</th>
+                    <th name="total_lending_fee">{{ lending_fee_totals|floatformat:2 }}</th>
                 </tr>
 
 
