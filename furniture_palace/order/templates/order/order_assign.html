@@ -75,4 +75,22 @@ Orders Furniture Palace
             {% endfor %}
           </tbody>
         </table>
+<div class="row">
+    <div class="pagination center-align">
+        <span class="step_links">
+            {% if orders.has_previous %}
+                <a href="?page={{ orders.previous_page_number}}">previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ orders.number }} of {{ orders.paginator.num_pages }}.
+            </span>
+            {% if orders.has_next %}
+                <a href="?page={{ orders.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <p>Assign Orders.</p>
+</div>
 {% endblock %}

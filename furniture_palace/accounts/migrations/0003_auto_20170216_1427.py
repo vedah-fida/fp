@@ -8,7 +8,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('auth', '0008_alter_user_username_max_length'),
         ('accounts', '0002_auto_20170214_2037'),
@@ -22,7 +21,9 @@ class Migration(migrations.Migration):
                 ('carpenter_address', models.CharField(max_length=100)),
                 ('carpenter_salary', models.DecimalField(decimal_places=2, max_digits=9)),
                 ('commission', models.DecimalField(decimal_places=2, max_digits=4)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
+                ('user',
+                 models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False,
+                                      to=settings.AUTH_USER_MODEL)),
             ],
         ),
         migrations.DeleteModel(

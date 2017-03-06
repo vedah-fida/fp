@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^view/customers/$', views.view_customers, name='view_customer'),
     url(r'^get/customer/$', views.get_customer, name='get_customer'),
     url(r'^update/customer/$', views.update_customer, name='update_customer'),
+    url(r'^search/customer/$', views.search_customer, name='search_customer'),
     url(r'^logout/$', views.logout_carpenter, name='logout'),
 ]

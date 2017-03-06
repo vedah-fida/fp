@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('accounts', '0001_initial'),
     ]
@@ -55,11 +54,15 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='material',
             name='material_name',
-            field=models.CharField(choices=[('nails', 'nails'), ('varnish', 'varnish'), ('glass', 'glass'), ('fabrics', 'fabrics'), ('cushions', 'cushions')], default='nails', max_length=100),
+            field=models.CharField(
+                choices=[('nails', 'nails'), ('varnish', 'varnish'), ('glass', 'glass'), ('fabrics', 'fabrics'),
+                         ('cushions', 'cushions')], default='nails', max_length=100),
         ),
         migrations.AlterField(
             model_name='seat',
             name='category',
-            field=models.CharField(choices=[('Arm Chair', 'Arm Chair'), ('Classroom Chairs', 'Classroom Chairs'), ('Office Chairs', 'Office Chairs'), ('Benches', 'Benches')], default='Office Chairs', max_length=50),
+            field=models.CharField(choices=[('Arm Chair', 'Arm Chair'), ('Classroom Chairs', 'Classroom Chairs'),
+                                            ('Office Chairs', 'Office Chairs'), ('Benches', 'Benches')],
+                                   default='Office Chairs', max_length=50),
         ),
     ]

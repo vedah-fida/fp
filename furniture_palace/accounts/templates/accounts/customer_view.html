@@ -6,46 +6,81 @@
 {% endblock %}
 
 {% block content%}
+<form action="{% url 'accounts:search_customer' %}" method="post">
+    {% csrf_token %}
+    <div class="col l7 m7 s12">
+         <div class="col l4 m4 s12">
+                <div class="input-field">
+                    <label for="search_query">search customer</label>
+                    <input id="search_query" type="text" name="query" required/>
+                </div>
+         </div>
+        <div class="col l4 m4 s12">
+             <div class="input-field">
+                <button class="btn waves-effect waves-light" type="submit" name="action">
+                    <i class="material-icons center">search</i>
+                </button>
+             </div>
+        </div>
+    </div>
+</form>
+<div class="col l12 m12 s12"><p style="color: green">{{ msg }}</p></div>
+<table>
+    <thead>
+    <tr>
+        <th>Customer Name</th>
+        <th>Customer Email</th>
+        <th>Customer Tel</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for customer in customers %}
+    <tr>
+        <td name="customer_name">
+            <form action="{% url 'accounts:get_customer' %}" method="post">
+                {% csrf_token %}
+                <div class="col l8 m8 s12">
+                    <div class="col l9 m9 s12">
+                        {{ customer.customer_name }}
+                    </div>
+                    <div class="col l3 m3 s12">
+                        <input type="submit" value="edit">
+                    </div>
 
-        <div class="col l12 m12 s12"><p style="color: green">{{ msg }}</p></div>
-        <table>
-              <thead>
-                <tr>
-                  <th>Customer Name</th>
-                  <th>Customer Email</th>
-                  <th>Customer Tel</th>
-                </tr>
-              </thead>
-              <tbody>
-              {% for customer in customers %}
-                <tr>
-                  <td name = "customer_name" >
-                      <form action="{% url 'accounts:get_customer' %}" method="post">
-                          {% csrf_token %}
-                          <div class="col l8 m8 s12">
-                              <div class = "col l9 m9 s12">
-                              {{ customer.customer_name }}
-                              </div>
-                              <div class = "col l3 m3 s12">
-                                 <input type="submit" value="edit">
-                              </div>
+                </div>
+                <!-- <table>
+                     <tr>
+                         <td>{{ customer.customer_name }}</td>
 
-                          </div>
-                         <!-- <table>
-                              <tr>
-                                  <td>{{ customer.customer_name }}</td>
+                         <td><input type="submit" value="edit"></td>
+                     </tr>
+                 </table>-->
+                <input type="hidden" name="customer_id" value="{{ customer.id }}">
+            </form>
 
-                                  <td><input type="submit" value="edit"></td>
-                              </tr>
-                          </table>-->
-                          <input type="hidden" name="customer_id" value="{{ customer.id }}">
-                      </form>
-
-                  </td>
-                  <td name = "customer_email">{{ customer.customer_email }}</td>
-                  <td name = "customer_tel">{{ customer.customer_tel_no }}</td>
-                </tr>
-              {% endfor %}
-              </tbody>
-        </table>
+        </td>
+        <td name="customer_email">{{ customer.customer_email }}</td>
+        <td name="customer_tel">{{ customer.customer_tel_no }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div class="row">
+    <div class="pagination center-align">
+        <span class="step_links">
+            {% if customers.has_previous %}
+                <a href="?page={{ customers.previous_page_number}}">previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ customers.number }} of {{ customers.paginator.num_pages }}.
+            </span>
+            {% if customers.has_next %}
+                <a href="?page={{ customers.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <p>Customer list.</p>
+</div>
 {% endblock %}

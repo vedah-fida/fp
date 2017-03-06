@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from catalog.models import Furniture
 from order.order import *
@@ -7,13 +9,14 @@ from accounts.models import Customer, TempCarpenter
 
 
 # Create your views here.
-
+@login_required(login_url='/')
 def make_order_page(request):
     furniture = Furniture.objects.all()
     customers = Customer.objects.all()
     return render(request, 'order/order_make.html', locals())
 
 
+@login_required(login_url='/')
 def make_order(request):
     # data for order
     order_name = request.POST['order_name']
@@ -36,6 +39,7 @@ def make_order(request):
     return render(request, 'order/order_info.html', locals())
 
 
+@login_required(login_url='/')
 def change_complete_status(request):
     order_number = request.POST['order_id']
     status = request.POST['order_status']
@@ -47,13 +51,24 @@ def change_complete_status(request):
     return render(request, 'order/order_view.html', locals())
 
 
+@login_required(login_url='/')
 def view_all_orders(request):
-    orders = get_started_orders()
+    orders_list = get_started_orders()
+    paginator = Paginator(orders_list, 2)
+    page = request.GET.get('page')
+    try:
+        orders = paginator.page(page)
+    except PageNotAnInteger:
+        orders = paginator.page(1)
+    except EmptyPage:
+        orders = paginator.page(paginator.num_pages)
+
     customers = Customer.objects.all()
     carpenters = User.objects.all().exclude(username="wolf")
     return render(request, 'order/order_view.html', locals())
 
 
+@login_required(login_url='/')
 def search_order(request):
     search_query = request.POST['query']
     search_field = request.POST['search_field']
@@ -63,6 +78,7 @@ def search_order(request):
     return render(request, 'order/order_view.html', locals())
 
 
+@login_required(login_url='/')
 def view_orders_for_customer(request):
     customer_id = request.POST['customer_id']
     orders = get_orders_for(customer_id)
@@ -71,6 +87,7 @@ def view_orders_for_customer(request):
     return render(request, 'order/order_view.html', locals())
 
 
+@login_required(login_url='/')
 def view_complete_status_orders(request):
     status = request.POST['status']
     if status == "complete":
@@ -90,6 +107,7 @@ def view_complete_status_orders(request):
         return render(request, 'order/order_view.html', locals())
 
 
+@login_required(login_url='/')
 def carpenter_orders(request):
     carpenter_id = request.POST['carpenter_id']
     orders = get_carpenter_orders(carpenter_id)
@@ -98,16 +116,28 @@ def carpenter_orders(request):
     return render(request, 'order/order_view.html', locals())
 
 
+@login_required(login_url='/')
 def assign_order_page(request):
-    orders = get_unassigned_orders()
+    orders_list = get_unassigned_orders()
+    paginator = Paginator(orders_list, 3)
+    page = request.GET.get('page')
+    try:
+        orders = paginator.page(page)
+    except PageNotAnInteger:
+        orders = paginator.page(1)
+    except EmptyPage:
+        orders = paginator.page(paginator.num_pages)
+
     user = request.user
     temporary_carpenters = TempCarpenter.objects.all()
     active_orders = Order.objects.filter(carpenter=user,
                                          complete_status=False,
                                          temp_carpenter=None)
+
     return render(request, 'order/order_assign.html', locals())
 
 
+@login_required(login_url='/')
 def take_order(request):
     # get user
     carpenter = request.user
@@ -129,6 +159,7 @@ def take_order(request):
         return render(request, 'order/order_assign.html', locals())
 
 
+@login_required(login_url='/')
 def assign_order(request):
     order_id = request.POST['order_id']
     temp_carpenter_id = request.POST['temp_carpenter']
@@ -141,6 +172,7 @@ def assign_order(request):
     return render(request, 'order/order_assign.html', locals())
 
 
+@login_required(login_url='/')
 def edit_order(request):
     order_id = request.POST['order_id']
     order = Order.object.get(id=order_id)
@@ -148,21 +180,34 @@ def edit_order(request):
     return render(request, 'order/order_info.html', locals())
 
 
+@login_required(login_url='/')
 def delete_order(request):
     pass
 
 
+@login_required(login_url='/')
 def show_payment_list(request):
-    order_payments = get_undelivered_order_payments()
+    orders_payment_list = get_undelivered_order_payments()
+    paginator = Paginator(orders_payment_list, 6)
+    page = request.GET.get('page')
+    try:
+        order_payments = paginator.page(page)
+    except PageNotAnInteger:
+        order_payments = paginator.page(1)
+    except EmptyPage:
+        order_payments = paginator.page(paginator.num_pages)
+
     return render(request, 'order/order_payments_list.html', locals())
 
 
+@login_required(login_url='/')
 def show_order_payment(request):
     order = request.POST['order']
     order_payment = get_order_payment(order)
     return render(request, 'order/order_payment.html', locals())
 
 
+@login_required(login_url='/')
 def update_order(request):
     order_id = request.POST['order']
     paid_amount = float(request.POST['paid_amount'])

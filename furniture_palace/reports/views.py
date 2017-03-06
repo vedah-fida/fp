@@ -1,8 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from reports import reports
 from catalog.catalog import get_returned_lent_tools
 
 
+@login_required(login_url='/')
 def show_carpenter_summary(request):
     carpenter_orders = reports.get_carpenter_orders(request.user)
     carpenter_orders_commission_total = reports.get_carpenter_order_totals_commission(request.user)
@@ -16,6 +18,7 @@ def show_carpenter_summary(request):
     return render(request, 'reports/carpenter_report.html', locals())
 
 
+@login_required(login_url='/')
 def show_monthly_summary(request):
     # lending_fees(pending)
     # delivery_fees(pending)

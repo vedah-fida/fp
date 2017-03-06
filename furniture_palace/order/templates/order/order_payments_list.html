@@ -20,10 +20,10 @@ Orders Furniture Palace
 <table>
     <thead>
         <tr>
-            <td>order id | order name</td>
-            <td>order customer</td>
-            <td>order deposit</td>
-            <td>order balance</td>
+            <th>order id | order name</th>
+            <th>order customer</th>
+            <th>order deposit</th>
+            <th>order balance</th>
         </tr>
     </thead>
     <tbody>
@@ -44,4 +44,22 @@ Orders Furniture Palace
     {% endfor %}
     </tbody>
 </table>
+<div class="row">
+    <div class="pagination center-align">
+        <span class="step_links">
+            {% if order_payments.has_previous %}
+                <a href="?page={{ orders.previous_page_number}}">previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ order_payments.number }} of {{ order_payments.paginator.num_pages }}.
+            </span>
+            {% if order_payments.has_next %}
+                <a href="?page={{ orders.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <p>Order Payments.</p>
+</div>
 {% endblock %}

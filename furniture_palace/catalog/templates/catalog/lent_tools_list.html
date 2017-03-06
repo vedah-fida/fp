@@ -42,4 +42,22 @@
     {% endfor %}
     </tbody>
 </table>
+<div class="row">
+    <div class="pagination center-align">
+        <span class="step_links">
+            {% if lent_tools.has_previous %}
+                <a href="?page={{ lent_tools.previous_page_number}}">previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ lent_tools.number }} of {{ lent_tools.paginator.num_pages }}.
+            </span>
+            {% if lent_tools.has_next %}
+                <a href="?page={{ lent_tools.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="row">
+    <p>Currently lent tools.</p>
+</div>
 {% endblock %}

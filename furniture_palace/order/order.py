@@ -70,30 +70,30 @@ def get_all_orders():
 
 
 def get_started_orders():
-    orders = Order.objects.all().exclude(carpenter=None)
+    orders = Order.objects.all().exclude(carpenter=None).order_by('-order_date')
     return orders
 
 
 def search_for_orders(query, field):
     if field == 'customer':
-        orders = Order.objects.filter(customer__customer_name__icontains=query)
+        orders = Order.objects.filter(customer__customer_name__icontains=query).order_by('order_date')
         return orders
     elif field == 'carpenter':
-        orders = Order.objects.filter(carpenter__username__icontains=query)
+        orders = Order.objects.filter(carpenter__username__icontains=query).order_by('order_date')
         return orders
     elif field == 'order_name':
-        orders = Order.objects.filter(order_name__icontains=query)
+        orders = Order.objects.filter(order_name__icontains=query).order_by('order_date')
         return orders
     elif field == 'temp_carpenter':
-        orders = Order.objects.filter(temp_carpenter__temp_carpenter_name__icontains=query)
+        orders = Order.objects.filter(temp_carpenter__temp_carpenter_name__icontains=query).order_by('order_date')
         return orders
     else:
-        orders = Order.objects.all()
+        orders = Order.objects.all().order_by('order_date')
         return orders
 
 
 def get_unassigned_orders():
-    orders = Order.objects.filter(carpenter=None, temp_carpenter=None).order_by('-order_date')
+    orders = Order.objects.filter(carpenter=None, temp_carpenter=None).order_by('order_date')
     return orders
 
 

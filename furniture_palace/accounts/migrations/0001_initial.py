@@ -7,7 +7,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -21,7 +20,9 @@ class Migration(migrations.Migration):
                 ('bed_name', models.CharField(max_length=200)),
                 ('bed_price', models.DecimalField(decimal_places=2, max_digits=20)),
                 ('image', models.CharField(max_length=254)),
-                ('category', models.CharField(choices=[('double', 'DOUBLE'), ('single', 'SINGLE'), ('double_decker', 'DOUBLE DECKER')], default='single', max_length=50)),
+                ('category', models.CharField(
+                    choices=[('double', 'DOUBLE'), ('single', 'SINGLE'), ('double_decker', 'DOUBLE DECKER')],
+                    default='single', max_length=50)),
             ],
         ),
         migrations.CreateModel(
@@ -45,7 +46,8 @@ class Migration(migrations.Migration):
                 ('customer_password', models.CharField(max_length=100)),
                 ('customer_tel_no', models.CharField(max_length=100)),
                 ('customer_address', models.TextField()),
-                ('customer_class', models.CharField(choices=[('Gold', 'GOLD'), ('Silver', 'SILVER')], default='Silver', max_length=15)),
+                ('customer_class',
+                 models.CharField(choices=[('Gold', 'GOLD'), ('Silver', 'SILVER')], default='Silver', max_length=15)),
             ],
         ),
         migrations.CreateModel(
@@ -65,7 +67,8 @@ class Migration(migrations.Migration):
                 ('order_date', models.DateField(auto_now_add=True)),
                 ('order_price', models.DecimalField(decimal_places=2, max_digits=20)),
                 ('order_completion_date', models.DateField()),
-                ('carpenter', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='accounts.Carpenter')),
+                ('carpenter',
+                 models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='accounts.Carpenter')),
                 ('customer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='accounts.Customer')),
             ],
         ),
@@ -76,7 +79,10 @@ class Migration(migrations.Migration):
                 ('seat_name', models.CharField(max_length=200)),
                 ('seat_price', models.DecimalField(decimal_places=2, max_digits=20)),
                 ('image', models.CharField(max_length=254)),
-                ('category', models.CharField(choices=[('Arm Chair', 'DOUBLE'), ('Classroom Chairs', 'Classroom Chairs'), ('Office Chairs', 'Office Chairs'), ('Benches', 'Benches')], default='Office Chairs', max_length=50)),
+                ('category', models.CharField(
+                    choices=[('Arm Chair', 'DOUBLE'), ('Classroom Chairs', 'Classroom Chairs'),
+                             ('Office Chairs', 'Office Chairs'), ('Benches', 'Benches')], default='Office Chairs',
+                    max_length=50)),
             ],
         ),
         migrations.CreateModel(
@@ -86,7 +92,10 @@ class Migration(migrations.Migration):
                 ('table_name', models.CharField(max_length=200)),
                 ('table_price', models.DecimalField(decimal_places=2, max_digits=20)),
                 ('image', models.CharField(max_length=254)),
-                ('category', models.CharField(choices=[('Coffee Table', 'Coffee Table'), ('Dinning Table', 'Dinning Table'), ('Kitchen Table', 'Kitchen Table'), ('Office Table', 'Office Table')], default='Coffee Table', max_length=50)),
+                ('category', models.CharField(
+                    choices=[('Coffee Table', 'Coffee Table'), ('Dinning Table', 'Dinning Table'),
+                             ('Kitchen Table', 'Kitchen Table'), ('Office Table', 'Office Table')],
+                    default='Coffee Table', max_length=50)),
             ],
         ),
         migrations.CreateModel(
@@ -104,7 +113,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('tool_name', models.CharField(max_length=250)),
                 ('lent', models.BooleanField(default=False)),
-                ('temp_carpenter', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='accounts.TempCarpenter')),
+                ('temp_carpenter', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE,
+                                                     to='accounts.TempCarpenter')),
             ],
         ),
     ]

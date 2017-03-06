@@ -13,42 +13,42 @@ Customer Register
 {% block content %}
 
 
-    <div><p style="color: red">{{ error_msg }}</p></div>
-    <div><p style="color: green">{{ success }}</p></div>
+<div><p style="color: red">{{ error_msg }}</p></div>
+<div><p style="color: green">{{ success }}</p></div>
 
-    <form action="{% url 'accounts:register_customer' %}" method="post">
-        {% csrf_token %}
-        <!--customer name field-->
-        <div class = "row">
-            <div class = "input-field col s12">
-                <input type = "text" id = "first_name" name = "customer_name">
-                <label for ="first_name">Customer Full Name</label>
-            </div>
+<form action="{% url 'accounts:register_customer' %}" method="post">
+    {% csrf_token %}
+    <!--customer name field-->
+    <div class="row">
+        <div class="input-field col s12">
+            <input type="text" id="first_name" name="customer_name">
+            <label for="first_name">Customer Full Name</label>
         </div>
-        <div class = "row">
-            <!--customer email field-->
-            <div class = "input-field col s6">
-                    <input type = "email" id  = "customer_email" name = "customer_email">
-                    <label for = "customer_email">Customer Email</label>
-            </div>
-            <div class = "input-field col s6">
-                <!--customer telephone number field-->
-                    <input type = "tel" id = "customer_tel" name = "customer_tel">
-                    <label for = "customer_tel">Tel</label>
-            </div>
+    </div>
+    <div class="row">
+        <!--customer email field-->
+        <div class="input-field col s6">
+            <input type="email" id="customer_email" name="customer_email">
+            <label for="customer_email">Customer Email</label>
         </div>
-        <div class  = "input-field col s6">
-            <!--customer address field-->
-            <textarea id="customer_address" class="materialize-textarea" name = "customer_address"></textarea>
-            <label for = "customer_address">Customer Address</label>
+        <div class="input-field col s6">
+            <!--customer telephone number field-->
+            <input type="tel" id="customer_tel" name="customer_tel">
+            <label for="customer_tel">Tel</label>
         </div>
+    </div>
+    <div class="input-field col s6">
+        <!--customer address field-->
+        <textarea id="customer_address" class="materialize-textarea" name="customer_address"></textarea>
+        <label for="customer_address">Customer Address</label>
+    </div>
 
-        <div class  = "input-field col s6">
-            <!--customer email address-->
-            <textarea id = "physical_address" class = "materialize-textarea" name  = "physical_address"></textarea>
-            <label for = "physical_address">Physical Address</label>
-        </div>
-        <!--input button-->
-        <input class = "waves-effect waves-light btn" type = "submit" name= "register_customer" value = "REGISTER CUSTOMER">
-    </form>
+    <div class="input-field col s6">
+        <!--customer email address-->
+        <textarea id="physical_address" class="materialize-textarea" name="physical_address"></textarea>
+        <label for="physical_address">Physical Address</label>
+    </div>
+    <!--input button-->
+    <input class="waves-effect waves-light btn" type="submit" name="register_customer" value="REGISTER CUSTOMER">
+</form>
 {% endblock %}

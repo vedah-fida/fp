@@ -56,3 +56,8 @@ def get_customer_with_id(customer_id):
     customer = Customer.objects.get(id=customer_id)
     # return the customer with the id
     return customer
+
+
+def search_for_customer(query):
+    customers = Customer.objects.filter(customer_name__icontains=query)
+    return customers
