@@ -29,11 +29,11 @@ def make_order(request):
     order_price = (float(furniture.material_price) * 1.7) * quantity
 
     # create and save order
-    save_order(customer, order_name, quantity, order_price, deposit)
-    msg = 'Order was created successfully.'
-    furniture = Furniture.objects.all()
-    customers = Customer.objects.all()
-    return render(request, 'order/order_make.html', locals())
+
+    new_order_id = save_order_and_return_id(customer, order_name, quantity, order_price, deposit)
+    order = get_order(new_order_id)
+    order_payment = get_order_payment(new_order_id)
+    return render(request, 'order/order_info.html', locals())
 
 
 def change_complete_status(request):
@@ -145,7 +145,7 @@ def edit_order(request):
     order_id = request.POST['order_id']
     order = Order.object.get(id=order_id)
     customers = Customer.objects.all()
-    return render(request, 'order/order_edit.html', locals())
+    return render(request, 'order/order_info.html', locals())
 
 
 def delete_order(request):

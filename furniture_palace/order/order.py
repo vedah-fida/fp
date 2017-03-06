@@ -6,7 +6,7 @@ from accounts.models import TempCarpenter
 
 
 # create new order and associate it with order payment
-def save_order(customer_id, order_name, quantity, order_price, deposit):
+def save_order_and_return_id(customer_id, order_name, quantity, order_price, deposit):
     new_order = Order()
 
     new_order.customer = Customer.objects.get(id=customer_id)
@@ -23,6 +23,8 @@ def save_order(customer_id, order_name, quantity, order_price, deposit):
     new_order_payment.balance = (order_price - deposit)
     new_order_payment.payment_percentage = (deposit / order_price) * 100
     new_order_payment.save()
+    new_order_id = new_order.id
+    return new_order_id
 
 
 def get_order(order_id):
@@ -136,3 +138,6 @@ def carpenter_active_orders(carpenter):
     else:
         active_orders = 0
         return active_orders
+
+
+

@@ -1,0 +1,27 @@
+<!Doctype html>
+<head>
+    <title>Carpenter Report</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+</head>
+<body>
+<h5>order_id {{ order.id }}</h5>
+<h5>order_name {{ order.order_name }}</h5>
+<h5>order_customer {{ order.customer }}</h5>
+<h5>order_quantity {{ order.quantity }}</h5>
+<h5>order_deposit {{ order_payment.deposit }}</h5>
+<h5>order_balance {{ order_payment.balance }}</h5>
+<h5>carpenter {{ username }}</h5>
+<a href = "{% url 'orders:all_orders'%}">go back</a>
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -16,4 +16,6 @@ urlpatterns = [
     url(r'^order_payments/$', views.show_payment_list, name='payment_list'),
     url(r'^order_update_page/$', views.show_order_payment, name='order_update_page'),
     url(r'^order_update/$', views.update_order, name='order_update'),
+    url(r'^order_edit/$', views.edit_order, name="edit_order"),
+
 ]
