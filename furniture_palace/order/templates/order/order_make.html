@@ -1,4 +1,4 @@
-{% extends "./base.html" %}
+{% extends "accounts/base.html" %}
 
 {% block title %}
 Make Orders Furniture Palace
@@ -11,7 +11,22 @@ Make Orders Furniture Palace
 {% endblock %}
 
 <!--order top navigation-->
-
+{% block navigation %}
+<div class="col l12 m12 s12">
+    <div class="col l3 m3 s12">
+        <li class="tab"><a href="{% url 'orders:all_orders' %}">View Orders</a></li>
+    </div>
+    <div class="col l3 m3 s12">
+        <li class="tab"><a href="{% url 'orders:order_page' %}">Make Order</a></li>
+    </div>
+    <div class="col l3 m3 s12">
+        <li class="tab"><a href="{% url 'orders:assign_order_page' %}">Assign Order</a></li>
+    </div>
+    <div class="col l3 m3 s12">
+        <li class="tab"><a href="{% url 'orders:payment_list' %}">Order Payments</a></li>
+    </div>
+</div>
+{% endblock %}
 
 
 <!--content-->

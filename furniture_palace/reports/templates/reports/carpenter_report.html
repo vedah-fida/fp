@@ -1,48 +1,24 @@
-<!doctype html>
+{% extends 'accounts/base.html' %}
+
 {% load report_tag %}
-<head>
-    <title>Carpenter Report</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+{% block title %}
+Carpenter Report.
+{% endblock %}
 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
-.col-sm-3, img{
-	height: 10em;
-}
-.col-sm-9, h2{
-	padding-top: 33px;
-}
-.container{
-	text-align: center;
-}
-h4,.double_underline{
-	border-bottom: 3px double;
-}
+{% block heading %}
+<h4>Carpenter Report.</h4>
+{% endblock %}
 
-    </style>
-</head>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-5">
-            <img src="/static/img/fp_logo.png" alt="Furniture Palace Image Logo">
-        </div>
-        <div class="col-sm-7">
-            <h2>Gross Salary for {{ username }}</h2>
-        </div>
-    </div>
-</div>
-<div class="col-sm-2">
-</div>
-<div class="col-sm-9">
-    <div class="container-fluid">
-        <div class="table-responsive">
-            <table class="table">
+{% block navigation %}
+<button>Button ya last month ya kupop up</button>
+<button>Button ya this month ya kupop up</button>
+{% endblock %}
+{% block content %}
+
+<p>Tutaweka vitu below ya kujaza page.</p>
+<p>tutaweka ii table kwa ile div modal ndo ifichike/ i-hide hadi msee afinye izo button apo juu.</p>
+            <table>
                 <thead>
                     <tr>
                         <th>Commission for Orders</th>
@@ -103,11 +79,4 @@ h4,.double_underline{
                     </ul>
                 </tr>
             </table>
-
-        </div>
-    </div>
-</div>
-<div class="col-sm-3">
-</div>
-</body>
-</html>
+{% endblock %}

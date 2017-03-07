@@ -49,7 +49,9 @@
         <!--heading-->
         {% block heading %}<h4>Carpenter Home</h4>{% endblock %}
 
+
         <!--order top navigation-->
+        {% block navigation %}
         <div class="l12 m12 s12">
             <div class="col l3 m3 s12">
                 <a href="{% url 'accounts:customer_registration' %}">Register Customer</a>
@@ -58,6 +60,8 @@
                 <a href="{% url 'accounts:view_customer' %}">View Customer</a>
             </div>
         </div>
+        {% endblock %}
+
         <!--content body-->
         {% block content %}{% endblock %}
     </div>

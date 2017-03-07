@@ -1,4 +1,4 @@
-{% extends "./base.html" %}
+{% extends "accounts/base.html" %}
 
 {% block title %}
 Orders Furniture Palace
@@ -11,70 +11,85 @@ Orders Furniture Palace
 {% endblock %}
 
 <!--order top navigation-->
-
+{% block navigation %}
+<div class="col l12 m12 s12">
+    <div class="col l3 m3 s12">
+        <li class="tab"><a href="{% url 'orders:all_orders' %}">View Orders</a></li>
+    </div>
+    <div class="col l3 m3 s12">
+        <li class="tab"><a href="{% url 'orders:order_page' %}">Make Order</a></li>
+    </div>
+    <div class="col l3 m3 s12">
+        <li class="tab"><a href="{% url 'orders:assign_order_page' %}">Assign Order</a></li>
+    </div>
+    <div class="col l3 m3 s12">
+        <li class="tab"><a href="{% url 'orders:payment_list' %}">Order Payments</a></li>
+    </div>
+</div>
+{% endblock %}
 
 
 {% block content %}
-    <p class="{{ styling }}"  style="color: white">{{ msg }}</p>
-       <table class="bordered responsive-table highlight centered">
-        <thead>
-          <tr>
-              <th>Order Id</th>
-              <th>Order Name</th>
-              <th>Quantity</th>
-              <th>Order Date</th>
-              <th>Customer</th>
-              <th>Carpenter</th>
-              <th>Temporary Carpenter</th>
-          </tr>
-        </thead>
+<p class="{{ styling }}" style="color: white">{{ msg }}</p>
+<table class="bordered responsive-table highlight centered">
+    <thead>
+    <tr>
+        <th>Order Id</th>
+        <th>Order Name</th>
+        <th>Quantity</th>
+        <th>Order Date</th>
+        <th>Customer</th>
+        <th>Carpenter</th>
+        <th>Temporary Carpenter</th>
+    </tr>
+    </thead>
 
-        <tbody id="orders">
-            {% for order in orders %}
-              <tr>
-                  <td>{{ order.id }}</td>
-                  <td>{{ order.order_name }}</td>
-                  <td>{{ order.quantity }}</td>
-                  <td>{{ order.order_date }}</td>
-                  <td>{{ order.customer }}</td>
-                  <td>
-                      <form action="{% url 'orders:take_order' %}" method="post">
-                          {% csrf_token %}
-                          <input type="text" value="{{ order.id }}" name="order_id" hidden>
-                          <input type="submit" value="Take Order">
-                      </form>
-                  <td>
-                      <form action="{% url 'orders:assign_order' %}" id="carpenter_select_form" method="post">
-                             {% csrf_token %}
-                             <table>
-                                  <tr>
-                                      <td>
-                                          <select id="temp_carpenter_select" name="temp_carpenter">
-                                              <option value="" disabled selected>Select...</option>
-                                              {% for tc in temporary_carpenters %}
-                                              <option value="{{ tc.id }}">{{ tc.temp_carpenter_name }}</option>
-                                              {% endfor %}
-                                          </select>
-                                           <input type="text" name="order_id" value="{{ order.id }}" hidden/>
-                                      </td>
-                                      <td>
-                                          <input type="submit" value="assign" />
-                                      </td>
-                                  </tr>
-                             </table>
-                      </form>
-                  </td>
-              </tr>
-            {% empty%}
-            <tr>
-                <td>
-                    <p>No orders available.</p>
-                </td>
-            </tr>
+    <tbody id="orders">
+    {% for order in orders %}
+    <tr>
+        <td>{{ order.id }}</td>
+        <td>{{ order.order_name }}</td>
+        <td>{{ order.quantity }}</td>
+        <td>{{ order.order_date }}</td>
+        <td>{{ order.customer }}</td>
+        <td>
+            <form action="{% url 'orders:take_order' %}" method="post">
+                {% csrf_token %}
+                <input type="text" value="{{ order.id }}" name="order_id" hidden>
+                <input type="submit" value="Take Order">
+            </form>
+        <td>
+            <form action="{% url 'orders:assign_order' %}" id="carpenter_select_form" method="post">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>
+                            <select id="temp_carpenter_select" name="temp_carpenter">
+                                <option value="" disabled selected>Select...</option>
+                                {% for tc in temporary_carpenters %}
+                                <option value="{{ tc.id }}">{{ tc.temp_carpenter_name }}</option>
+                                {% endfor %}
+                            </select>
+                            <input type="text" name="order_id" value="{{ order.id }}" hidden/>
+                        </td>
+                        <td>
+                            <input type="submit" value="assign"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </td>
+    </tr>
+    {% empty%}
+    <tr>
+        <td>
+            <p>No orders available.</p>
+        </td>
+    </tr>
 
-            {% endfor %}
-          </tbody>
-        </table>
+    {% endfor %}
+    </tbody>
+</table>
 <div class="row">
     <div class="pagination center-align">
         <span class="step_links">
