@@ -1,3 +1,15 @@
+
+#outer-container{
+	width: 700px;
+}
+#carpenter_name{
+padding-top:3em;
+text-align:center;
+}
+img{
+   height: 7em;
+    width: auto;
+    }
 .col-sm-3, img{
 	height: 10em;
 }
@@ -6,8 +18,7 @@
 	text-align: center;
 }
 h4,.double_underline{
-	border-bottom: 3px double;
-}
+text-decoration: none}
 #figures{
 	text-align:right;
 	

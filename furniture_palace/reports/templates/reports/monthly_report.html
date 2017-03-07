@@ -9,200 +9,427 @@ Monthly Report.
 {% endblock %}
 
 {% block navigation %}
-<button>Button ya last month ya kupop up</button>
-<button>Button ya this month ya kupop up</button>
+<a class="waves-effect waves-light btn" href="#modal1">This Month</a>
+<a class="waves-effect waves-light btn" href="#modal2">Last Month</a>
 {% endblock %}
 {% block content %}
-
-<p>Tutaweka vitu below ya kujaza page.</p>
-<p>tutaweka ii table kwa ile div modal ndo ifichike/ i-hide hadi msee afinye izo button apo juu.</p>
-<table>
-    <thead>
-    <tr>
-        <ul class="list-group">
-            <td><h3><strong>SUMMARY</strong></h3></td>
-        </ul>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>Damage Fees</td>
-        <td name="total_damage_fee">{{ damage_fee_totals|floatformat:2 }}</td>
-    </tr>
-    <tr>
-        <td>Salaries</td>
-        <td name="total_salaries">{{ salary_totals|floatformat:2 }}</td>
-    </tr>
-    <tr>
-        <td>Orders(complete)</td>
-        <td name="total_orders">{{ orders_totals|floatformat:2 }}</td>
-    </tr>
-    <tr>
-        <td>Commissions</td>
-        <td name="total_commissions">{{ commission_totals|floatformat:2 }}</td>
-    </tr>
-    <tr>
-        <td>Storage Fees</td>
-        <td name="total_storage_fee">{{ storage_fee_totals|floatformat:2 }}</td>
-    </tr>
-    <tr>
-        <td>Tool Lending Fee</td>
-        <td name="total_lending_fee">{{ lending_fee_totals|floatformat:2 }}</td>
-    </tr>
-    </tbody>
-    <tr>
-        <th>TOTAL</th>
-        <th name="total_report_amount">AMOUNT IN FIGURES</th>
-    </tr>
-    <thead>
-    <tr>
-        <ul class="list-group">
-            <td><h3><strong>DETAILED REPORT</strong></h3></td>
-        </ul>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td><h4><strong>Damages</strong></h4></td>
-    </tr>
-    {% for damaged_tool in damaged_tools %}
-    <tr>
-        <td>{{ damaged_tool.tool }}</td>
-        <td>{{ damaged_tool.tool.damage_fee }}</td>
-    </tr>
-    {% empty %}
-    <tr>
-        <td>No damaged tools</td>
-        <td>0.00</td>
-    </tr>
-    {% endfor %}
-    </tbody>
+<!-- Modal Trigger -->
 
 
-    <tr>
-        <th>Total Damage Fee</th>
-        <th>{{ damage_fee_totals|floatformat:2 }}</th>
-    </tr>
-
-    <tbody>
-
-    <tr>
-        <td><h4><strong>Salaries</strong></h4></td>
-    </tr>
-    {% for profile in carpenter_profiles %}
-    <tr>
-        <td>{{ profile.carpenter }}</td>
-        <td name="carpenter_y_salary">{{ profile.carpenter_salary }}</td>
-    </tr>
-    {% endfor %}
-    </tbody>
-
-    <tr>
-        <th>Total Salaries</th>
-        <th name="total_salaries">{{ salary_totals }}</th>
-    </tr>
-
-    <tbody>
-
-    <tr>
-        <td><h4><strong>Complete Orders</strong></h4></td>
-    </tr>
-    {% for order in complete_orders %}
-    <tr>
-        <td>{{ order.order_name }}</td>
-        <td name="order_price">{{ order.order_price }}</td>
-    </tr>
-    {% endfor %}
-    </tbody>
-    <tr>
-        <th>Total Order Fee</th>
-        <th name="total_orders">{{ orders_totals|floatformat:2 }}</th>
-    </tr>
-    <tbody>
-
-    <tr>
-        <td><h4><strong>Commissions</strong></h4></td>
-    </tr>
-    <tr>
-        <!-- for more details, inherit form from carpenter report-->
-        <td>Main Carpenters</td>
-        <td name="total_permanent_carpenter_commissions">{{ carpenter_commission_totals|floatformat:2 }}
-        </td>
-    </tr>
-    <tr>
-        <!-- for more details, inherit form from temp-carpenter report-->
-
-        <td>Temporary Carpenters</td>
-        <td name="total_temp_carpenter_commission">{{ temp_carpenter_commission_totals|floatformat:2 }}
-        </td>
-    </tr>
-    </tbody>
-    <tr>
-        <th>Total Commissions</th>
-        <th name="main_and_temp_carp_commissions">{{ commission_totals|floatformat:2 }}</th>
-    </tr>
-    <tbody>
-
-    <tr>
-        <td><h4><strong>Storage Fee</strong></h4></td>
-    </tr>
-    <thead>
-    <tr>
-        <th>Order</th>
-        <th>Days Extended</th>
-        <th>Total Charge</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for order in orders_with_storage_fee %}
-    <tr>
-        <td name="delayed_order_name">{{order.order}}</td>
-        <td name="extended_days">{{ order.days_in_store }}</td>
-        <td name="delayed_order_price">{{ order.storage_fee }}</td>
-    </tr>
-    {% empty %}
-    <tr>
-        <td>No orders with storage fee</td>
-        <td>0.00</td>
-    </tr>
-    {% endfor%}
-    </tbody>
-    <tr>
-        <th>Total Storage Fee</th>
-        <th name="total_storage_fee">{{ storage_fee_totals|floatformat:2 }}</th>
-    </tr>
-    <tbody>
-
-    <tr>
-        <td><h4><strong>Lending Fee</strong></h4></td>
-    </tr>
-    {% for lent_tool in lent_tools %}
-    <tr>
-        <td name="tool_name">{{ lent_tool.tool }}</td>
-        <td name="lending_fee">{{ lent_tool.lending_fee }}</td>
-    </tr>
-    {% empty %}
-    <tr>
-        <td>No lent tools</td>
-        <td>0.00</td>
-    </tr>
-    {% endfor %}
-    </tbody>
-    <tr>
-        <th>Total Lending Fee</th>
-        <th name="total_lending_fee">{{ lending_fee_totals|floatformat:2 }}</th>
-    </tr>
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col l4">
+                <img src="/static/img/furniture_palace.png" alt="Furniture Palace Image Logo">
+            </div>
+            <div class="col l8">
+                <h4 id="carpenter_name">March Monthly Report</h4>
+            </div>
+        </div>
+        <table class="bordered">
+            <thead>
+            <tr>
+                <ul class="list-group">
+                    <td><h3><strong>SUMMARY</strong></h3></td>
+                </ul>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Damage Fees</td>
+                <td name="total_damage_fee" id = "figures">{{ damage_fee_totals|floatformat:2 }}</td>
+            </tr>
+            <tr>
+                <td>Salaries</td>
+                <td name="total_salaries" id = "figures">{{ salary_totals|floatformat:2 }}</td>
+            </tr>
+            <tr>
+                <td>Orders(complete)</td>
+                <td name="total_orders" id = "figures">{{ orders_totals|floatformat:2 }}</td>
+            </tr>
+            <tr>
+                <td>Commissions</td>
+                <td name="total_commissions" id = "figures">{{ commission_totals|floatformat:2 }}</td>
+            </tr>
+            <tr>
+                <td>Storage Fees</td>
+                <td name="total_storage_fee" id = "figures">{{ storage_fee_totals|floatformat:2 }}</td>
+            </tr>
+            <tr>
+                <td>Tool Lending Fee</td>
+                <td name="total_lending_fee" id = "figures">{{ lending_fee_totals|floatformat:2 }}</td>
+            </tr>
+            </tbody>
+            <tr>
+                <th>TOTAL</th>
+                <th name="total_report_amount" id = "second">AMOUNT IN FIGURES</th>
+            </tr>
+            <thead>
+            <tr>
+                <ul class="list-group">
+                    <td><h4><strong>DETAILED REPORT</strong></h4></td>
+                </ul>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><h5><strong>Damages</strong></h5></td>
+            </tr>
+            {% for damaged_tool in damaged_tools %}
+            <tr>
+                <td>{{ damaged_tool.tool }}</td>
+                <td id = "figures">{{ damaged_tool.tool.damage_fee }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td>No damaged tools</td>
+                <td>0.00</td>
+            </tr>
+            {% endfor %}
+            </tbody>
 
 
-    <tr>
-        <ul class="list-group">
-            <td>
-                <li class="list-group-item active">TOTALS</li>
-            </td>
-            <td name="total_report_amount">
-                <li class="list-group-item active">AMOUNT</li>
-            </td>
-        </ul>
-    </tr>
-</table>
+            <tr>
+                <th>Total Damage Fee</th>
+                <th id = "figures">{{ damage_fee_totals|floatformat:2 }}</th>
+            </tr>
+
+            <tbody>
+
+            <tr>
+                <td><h4><strong>Salaries</strong></h4></td>
+            </tr>
+            {% for profile in carpenter_profiles %}
+            <tr>
+                <td>{{ profile.carpenter }}</td>
+                <td name="carpenter_y_salary" id = "figures">{{ profile.carpenter_salary }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+
+            <tr>
+                <th>Total Salaries</th>
+                <th name="total_salaries" id="figures">{{ salary_totals }}</th>
+            </tr>
+
+            <tbody>
+
+            <tr>
+                <td><h4><strong>Complete Orders</strong></h4></td>
+            </tr>
+            {% for order in complete_orders %}
+            <tr>
+                <td>{{ order.order_name }}</td>
+                <td name="order_price" id = "figures">{{ order.order_price }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            <tr>
+                <th>Total Order Fee</th>
+                <th name="total_orders" id = "figures">{{ orders_totals|floatformat:2 }}</th>
+            </tr>
+            <tbody>
+
+            <tr>
+                <td><h4><strong>Commissions</strong></h4></td>
+            </tr>
+            <tr>
+                <!-- for more details, inherit form from carpenter report-->
+                <td>Main Carpenters</td>
+                <td name="total_permanent_carpenter_commissions" id = "figures">{{ carpenter_commission_totals|floatformat:2 }}
+                </td>
+            </tr>
+            <tr>
+                <!-- for more details, inherit form from temp-carpenter report-->
+
+                <td>Temporary Carpenters</td>
+                <td name="total_temp_carpenter_commission" id = "figures">{{ temp_carpenter_commission_totals|floatformat:2 }}
+                </td>
+            </tr>
+            </tbody>
+            <tr>
+                <th>Total Commissions</th>
+                <th name="main_and_temp_carp_commissions" id = "figures">{{ commission_totals|floatformat:2 }}</th>
+            </tr>
+            <tbody>
+
+            <tr>
+                <td><h4><strong>Storage Fee</strong></h4></td>
+            </tr>
+            <thead>
+            <tr>
+                <th>Order</th>
+                <th>Days Extended</th>
+                <th>Total Charge</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in orders_with_storage_fee %}
+            <tr>
+                <td name="delayed_order_name">{{order.order_id}}</td>
+                <td name="extended_days">{{ order.days_in_store }}</td>
+                <td name="delayed_order_price">{{ order.storage_fee }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td>No orders with storage fee</td>
+                <td>0.00</td>
+            </tr>
+            {% endfor%}
+            </tbody>
+            <tr>
+                <th>Total Storage Fee</th>
+                <th name="total_storage_fee" id = "figures">{{ storage_fee_totals|floatformat:2 }}</th>
+            </tr>
+            <tbody>
+
+            <tr>
+                <td><h4><strong>Lending Fee</strong></h4></td>
+            </tr>
+            {% for lent_tool in lent_tools %}
+            <tr>
+                <td name="tool_name">{{ lent_tool.tool }}</td>
+                <td name="lending_fee" id = "figures">{{ lent_tool.lending_fee }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td>No lent tools</td>
+                <td>0.00</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            <tr>
+                <th>Total Lending Fee</th>
+                <th name="total_lending_fee" id = "figures">{{ lending_fee_totals|floatformat:2 }}</th>
+            </tr>
+
+
+            <tr>
+                <ul class="list-group">
+                    <td>
+                         <h4><strong>TOTALS</strong></h4>
+                    </td>
+                    <td name="total_report_amount">
+                         <h4><strong>Amount</strong></h4>
+                    </td>
+                </ul>
+            </tr>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" onclick="myFunction()">Print</button>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>
+<!--Second Modal -->
+<!-- Modal Structure -->
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col l4">
+                <img src="/static/img/furniture_palace.png" alt="Furniture Palace Image Logo">
+            </div>
+            <div class="col l8">
+                <h4 id="carpenter_name">February Monthly Report</h4>
+            </div>
+        </div>
+        <table class="bordered">
+            <thead>
+            <tr>
+                <ul class="list-group">
+                    <td><h3><strong>SUMMARY</strong></h3></td>
+                </ul>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Damage Fees</td>
+                <td name="total_damage_fee" id = "figures">{{ damage_fee_totals|floatformat:2 }}</td>
+            </tr>
+            <tr>
+                <td>Salaries</td>
+                <td name="total_salaries" id = "figures">{{ salary_totals|floatformat:2 }}</td>
+            </tr>
+            <tr>
+                <td>Orders(complete)</td>
+                <td name="total_orders" id = "figures">{{ orders_totals|floatformat:2 }}</td>
+            </tr>
+            <tr>
+                <td>Commissions</td>
+                <td name="total_commissions" id = "figures">{{ commission_totals|floatformat:2 }}</td>
+            </tr>
+            <tr>
+                <td>Storage Fees</td>
+                <td name="total_storage_fee" id = "figures">{{ storage_fee_totals|floatformat:2 }}</td>
+            </tr>
+            <tr>
+                <td>Tool Lending Fee</td>
+                <td name="total_lending_fee" id = "figures">{{ lending_fee_totals|floatformat:2 }}</td>
+            </tr>
+            </tbody>
+            <tr>
+                <th>TOTAL</th>
+                <th name="total_report_amount" id = "second">AMOUNT IN FIGURES</th>
+            </tr>
+            <thead>
+            <tr>
+                <ul class="list-group">
+                    <td><h4><strong>DETAILED REPORT</strong></h4></td>
+                </ul>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><h5><strong>Damages</strong></h5></td>
+            </tr>
+            {% for damaged_tool in damaged_tools %}
+            <tr>
+                <td>{{ damaged_tool.tool }}</td>
+                <td id = "figures">{{ damaged_tool.tool.damage_fee }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td>No damaged tools</td>
+                <td>0.00</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+
+
+            <tr>
+                <th>Total Damage Fee</th>
+                <th id = "figures">{{ damage_fee_totals|floatformat:2 }}</th>
+            </tr>
+
+            <tbody>
+
+            <tr>
+                <td><h4><strong>Salaries</strong></h4></td>
+            </tr>
+            {% for profile in carpenter_profiles %}
+            <tr>
+                <td>{{ profile.carpenter }}</td>
+                <td name="carpenter_y_salary" id = "figures">{{ profile.carpenter_salary }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+
+            <tr>
+                <th>Total Salaries</th>
+                <th name="total_salaries" id="figures">{{ salary_totals }}</th>
+            </tr>
+
+            <tbody>
+
+            <tr>
+                <td><h4><strong>Complete Orders</strong></h4></td>
+            </tr>
+            {% for order in complete_orders %}
+            <tr>
+                <td>{{ order.order_name }}</td>
+                <td name="order_price" id = "figures">{{ order.order_price }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            <tr>
+                <th>Total Order Fee</th>
+                <th name="total_orders" id = "figures">{{ orders_totals|floatformat:2 }}</th>
+            </tr>
+            <tbody>
+
+            <tr>
+                <td><h4><strong>Commissions</strong></h4></td>
+            </tr>
+            <tr>
+                <!-- for more details, inherit form from carpenter report-->
+                <td>Main Carpenters</td>
+                <td name="total_permanent_carpenter_commissions" id = "figures">{{ carpenter_commission_totals|floatformat:2 }}
+                </td>
+            </tr>
+            <tr>
+                <!-- for more details, inherit form from temp-carpenter report-->
+
+                <td>Temporary Carpenters</td>
+                <td name="total_temp_carpenter_commission" id = "figures">{{ temp_carpenter_commission_totals|floatformat:2 }}
+                </td>
+            </tr>
+            </tbody>
+            <tr>
+                <th>Total Commissions</th>
+                <th name="main_and_temp_carp_commissions" id = "figures">{{ commission_totals|floatformat:2 }}</th>
+            </tr>
+            <tbody>
+
+            <tr>
+                <td><h4><strong>Storage Fee</strong></h4></td>
+            </tr>
+            <thead>
+            <tr>
+                <th>Order</th>
+                <th>Days Extended</th>
+                <th>Total Charge</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in orders_with_storage_fee %}
+            <tr>
+                <td name="delayed_order_name">{{order.order_id}}</td>
+                <td name="extended_days">{{ order.days_in_store }}</td>
+                <td name="delayed_order_price">{{ order.storage_fee }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td>No orders with storage fee</td>
+                <td>0.00</td>
+            </tr>
+            {% endfor%}
+            </tbody>
+            <tr>
+                <th>Total Storage Fee</th>
+                <th name="total_storage_fee" id = "figures">{{ storage_fee_totals|floatformat:2 }}</th>
+            </tr>
+            <tbody>
+
+            <tr>
+                <td><h4><strong>Lending Fee</strong></h4></td>
+            </tr>
+            {% for lent_tool in lent_tools %}
+            <tr>
+                <td name="tool_name">{{ lent_tool.tool }}</td>
+                <td name="lending_fee" id = "figures">{{ lent_tool.lending_fee }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td>No lent tools</td>
+                <td>0.00</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            <tr>
+                <th>Total Lending Fee</th>
+                <th name="total_lending_fee" id = "figures">{{ lending_fee_totals|floatformat:2 }}</th>
+            </tr>
+
+
+            <tr>
+                <ul class="list-group">
+                    <td>
+                         <h4><strong>TOTALS</strong></h4>
+                    </td>
+                    <td name="total_report_amount">
+                         <h4><strong>Amount</strong></h4>
+                    </td>
+                </ul>
+            </tr>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" onclick="myFunction()">Print</button>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>
+<p>Content to be added below</p>
+
+
 {% endblock %}

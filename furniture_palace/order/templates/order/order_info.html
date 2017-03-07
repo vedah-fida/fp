@@ -1,27 +1,89 @@
-<!Doctype html>
+<!Doctype = "html">
 <head>
-    <title>Carpenter Report</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-
-</head>
-<body>
-<h5>order_id {{ order.id }}</h5>
-<h5>order_name {{ order.order_name }}</h5>
-<h5>order_customer {{ order.customer }}</h5>
-<h5>order_quantity {{ order.quantity }}</h5>
-<h5>order_deposit {{ order_payment.deposit }}</h5>
-<h5>order_balance {{ order_payment.balance }}</h5>
-<h5>carpenter pt{{ username }}</h5>
-<a href = "{% url 'orders:all_orders'%}">go back</a>
-
+	<title>Carpenter Report</title>
+	<link rel="stylesheet" href="/static/css/styles.css">
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+#go-back, a, a:hover{
+	text-decoration: none;
+	color:white;
+}
+</style>
+	</head>
+<body>
+	<div class = "row">
+		<div class = "col-sm-3"></div>
+		<div class = "col-sm-6">
+			<div class = "row">
+			<div class = "col-sm-12">
+
+				<table class = "table table-bordered">
+					<thead>
+						<tr>
+						<th><img src="/static/img/furniture_palace.png" alt="Furniture Palace Image Logo"></th>
+						<th id = "second"><h2>Order Receipt</h2></th>
+						</tr>
+					</thead>
+					<tbody>
+						<th>Order Details</td>
+							<th id = "second">Order Description</th>
+						<tr>
+							<td><h5>order_name</h5></td>
+							<td id = "figures"><h5>{{ order.order_name }}</h5></td>
+							<tr>
+                        <td id = "column-left"> <h5>Order ID</h5> </td>
+                         <td id = "figures"> <h5>{{ order.id }}</h5> </td>
+                    </tr>
+                    <tr>
+                        <td id = "column-left"><h5>Order Name</h5> </td>
+                        <td id = "figures"><h5>{{ order.order_name }}</h5> </td>
+                    </tr>
+                    <tr>
+                        <td id = "column-left"> <h5>Order Customer</h5> </td>
+                         <td id = "figures"> <h5>{{ order.customer }}</h5> </td>
+                    </tr>
+                    <tr>
+                        <td id = "column-left"> <h5>Order Quantity</h5></td>
+                        <td id = "figures"> <h5>{{ order.quantity }}</h5></td>
+                    </tr>
+                    <tr>
+                         <td id = "column-left"> <h5>Order Deposit</h5></td>
+                        <td id = "figures"> <h5>{{ order_payment.deposit }}</h5></td>
+
+                    </tr>
+                    <tr>
+                         <td id = "column-left"><h5>Order Balance</h5> </td>
+                        <td id = "figures"><h5>{{ order_payment.balance }}</h5> </td>
+                    </tr>
+                    <tr>
+                         <td id = "column-left"> <h5>Carpenter</h5></td>
+                        <td id = "figures"> <h5>{{ username }}</h5></td>
+                    </tr>
+                    <tr>
+                        <!--<td><button type="button" class="btn btn-primary"  href = "{%url 'orders:all_orders'%}">Go back</button></td>-->
+
+                        <td id = "go-back"><button type="button" class="btn btn-info"><a href = "{% url 'orders:all_orders'%}">Go Back</a>  </button></td>
+
+                        <td id = "second"> <button type = "button" class = "btn btn-success" onclick="myFunction()">Print</button></td>
+
+                    </tr>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+		</div>
+
+		<div class = "col-sm-3"></div>
+	</div>
+
 </body>
 </html>

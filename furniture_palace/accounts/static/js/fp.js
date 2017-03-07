@@ -1,4 +1,7 @@
  $(document).ready(function() {
+    $('.modal').modal();
+
+
 // initialize the select button
     $('select').material_select();
 //submit complete_status form on the orders table
