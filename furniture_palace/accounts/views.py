@@ -45,10 +45,12 @@ def register_customer(request):
     # check if the customer exists or not and throw an error or save the customer
     if customer_exists(customer_email):
         error_msg = 'Customer already exists.'
+        error_styling = 'card-panel red lighten-1'
         return render(request, 'accounts/customer_register.html', locals())
     else:
         save_customer(customer_name, customer_email, customer_tel_no, customer_address, customer_physical_address)
         success = 'Customer successfully registered.'
+        success_styling = 'card-panel teal lighten-2'
         return render(request, 'accounts/customer_register.html', locals())
 
 
@@ -84,7 +86,8 @@ def update_customer(request):
 
     update_customer_with_details(customer_id, customer_name, customer_email, customer_tel_no, customer_address,
                                  customer_physical_address)
-    msg = "Customer edit successful."
+    msg = "Customer with id "+customer_id+" has been updated."
+    success_styling = 'card-panel teal lighten-2'
     customers = get_all_customers()
     return render(request, 'accounts/customer_view.html', locals())
 

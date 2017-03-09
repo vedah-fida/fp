@@ -37,7 +37,7 @@ Make Orders Furniture Palace
         <!--order name select-->
         <div class="input-field col l7 m7 s12">
                 {% csrf_token %}
-                <select id="order_name_select" name="order_name">
+                <select id="order_name_select" name="order_name" required>
                   <option value="" selected disabled>select order</option>
                   <optgroup label="Beds">
                       {% for item in furniture %}
@@ -70,11 +70,6 @@ Make Orders Furniture Palace
           <label for="quantity">Quantity</label>
         </div>
 
-        <!--order completion date-->
-        <div class="input-field col l6 m6 s12">
-            <label for="order_completion_date">Order Completion Date</label>
-            <input id="order_completion_date" type="text" class="datepicker" name="order_completion_date" required />
-        </div>
 
         <!--customer field-->
         <div class="input-field col l7 m7 s12">

@@ -6,7 +6,8 @@
 {% endblock %}
 
 {% block content%}
-<form action="{% url 'accounts:search_customer' %}" method="post">
+<div class="row">
+    <form action="{% url 'accounts:search_customer' %}" method="post">
     {% csrf_token %}
     <div class="col l7 m7 s12">
          <div class="col l4 m4 s12">
@@ -23,8 +24,9 @@
              </div>
         </div>
     </div>
-</form>
-<div class="col l12 m12 s12"><p style="color: green">{{ msg }}</p></div>
+    </form>
+</div>
+<p class="{{ success_styling }}" style="color: #ffffff;">{{ msg }}</p>
 <table>
     <thead>
     <tr>

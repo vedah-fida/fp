@@ -4,6 +4,7 @@ from order import views
 urlpatterns = [
     url('^order/$', views.make_order_page, name='order_page'),
     url(r'^make_order/$', views.make_order, name='make_order'),
+    url(r'^order_info/(?P<order_id>[-\w]+)/$', views.order_info, name='order_info'),
     url(r'^all_orders/$', views.view_all_orders, name='all_orders'),
     url(r'^customer_orders/$', views.view_orders_for_customer, name='customer_orders'),
     url(r'^carpenter_orders/$', views.carpenter_orders, name='carpenter_orders'),
@@ -17,5 +18,4 @@ urlpatterns = [
     url(r'^order_update_page/$', views.show_order_payment, name='order_update_page'),
     url(r'^order_update/$', views.update_order, name='order_update'),
     url(r'^order_edit/$', views.edit_order, name="edit_order"),
-
 ]

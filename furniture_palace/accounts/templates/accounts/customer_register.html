@@ -10,45 +10,48 @@ Customer Register
 </div>
 {% endblock %}
 
+
 {% block content %}
-
-
-<div><p style="color: red">{{ error_msg }}</p></div>
-<div><p style="color: green">{{ success }}</p></div>
+<br>
+<p class="{{ error_styling }}" style="color: #ffffff;">{{ error_msg }}</p>
+<p class="{{ success_styling }}" style="color: #ffffff;">{{ success }}</p>
 
 <form action="{% url 'accounts:register_customer' %}" method="post">
     {% csrf_token %}
     <!--customer name field-->
     <div class="row">
         <div class="input-field col s12">
-            <input type="text" id="first_name" name="customer_name">
+            <input type="text" id="first_name" name="customer_name" required>
             <label for="first_name">Customer Full Name</label>
         </div>
     </div>
     <div class="row">
         <!--customer email field-->
         <div class="input-field col s6">
-            <input type="email" id="customer_email" name="customer_email">
+            <input type="email" id="customer_email" name="customer_email" required>
             <label for="customer_email">Customer Email</label>
         </div>
         <div class="input-field col s6">
             <!--customer telephone number field-->
-            <input type="tel" id="customer_tel" name="customer_tel">
+            <input type="tel" id="customer_tel" name="customer_tel" required>
             <label for="customer_tel">Tel</label>
         </div>
     </div>
     <div class="input-field col s6">
         <!--customer address field-->
-        <textarea id="customer_address" class="materialize-textarea" name="customer_address"></textarea>
+        <textarea id="customer_address" class="materialize-textarea" name="customer_address" required></textarea>
         <label for="customer_address">Customer Address</label>
     </div>
 
     <div class="input-field col s6">
         <!--customer email address-->
-        <textarea id="physical_address" class="materialize-textarea" name="physical_address"></textarea>
+        <textarea id="physical_address" class="materialize-textarea" name="physical_address" required></textarea>
         <label for="physical_address">Physical Address</label>
     </div>
-    <!--input button-->
-    <input class="waves-effect waves-light btn" type="submit" name="register_customer" value="REGISTER CUSTOMER">
+    <div class="col l12 m12 s12">
+         <!--input button-->
+        <input class="waves-effect waves-light btn" type="submit" name="register_customer" value="REGISTER CUSTOMER">
+    </div>
+
 </form>
 {% endblock %}

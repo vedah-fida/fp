@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import render
+from django.core import urlresolvers
+from django.shortcuts import render, HttpResponseRedirect
 from catalog.models import Furniture
 from order.order import *
 from order.order_payments import *
@@ -21,7 +22,6 @@ def make_order(request):
     # data for order
     order_name = request.POST['order_name']
     quantity = float(request.POST['quantity'])
-    order_completion_date = request.POST['order_completion_date']
     customer = int(request.POST['customer'])
 
     # data for order payment
@@ -34,8 +34,13 @@ def make_order(request):
     # create and save order
 
     new_order_id = save_order_and_return_id(customer, order_name, quantity, order_price, deposit)
-    order = get_order(new_order_id)
-    order_payment = get_order_payment(new_order_id)
+    url = urlresolvers.reverse('orders:order_info', kwargs={'order_id': new_order_id})
+    return HttpResponseRedirect(url)
+
+
+def order_info(request, order_id):
+    order = get_order(order_id)
+    order_payment = get_order_payment(order_id)
     return render(request, 'order/order_info.html', locals())
 
 
