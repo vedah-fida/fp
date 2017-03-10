@@ -4,19 +4,21 @@
     <h4>Tools.</h4>
 </div>
 {% endblock %}
+
+
 {% block navigation %}
-  <div class="l12 m12 s12">
-                <div class="col l3 m3 s12">
-                    <a href="{% url 'catalogs:lent_tools' %}">view lent tools</a>
-                </div>
-                <div class="col l3 m3 s12">
-                    <a href="{% url 'catalogs:lend_tool_page' %}">lend tool</a>
-                </div>
-                <div class="col l3 m3 s12">
-                    <a href="{% url 'catalogs:lent_tool_record' %}">lent tool record</a>
-                </div>
-            </div>
+<nav>
+    <div class="nav-wrapper teal">
+      <ul id="nav-mobile" class="center">
+        <li><a href="{% url 'catalogs:lent_tools' %}">view lent tools</a></li>
+        <li  class="active"><a href="{% url 'catalogs:lend_tool_page' %}">lend tool</a></li>
+        <li> <a href="{% url 'catalogs:lent_tool_record' %}">lent tool record</a></li>
+      </ul>
+    </div>
+</nav>
 {% endblock %}
+
+
 {% block content%}
 <div class="col l12 m12 s12"><p style="color: green">{{ msg }}</p></div>
 

@@ -3,6 +3,7 @@ from order import views
 
 urlpatterns = [
     url('^order/$', views.make_order_page, name='order_page'),
+    url('^my_active_orders/$', views.view_carpenter_orders, name='active_orders'),
     url(r'^make_order/$', views.make_order, name='make_order'),
     url(r'^order_info/(?P<order_id>[-\w]+)/$', views.order_info, name='order_info'),
     url(r'^all_orders/$', views.view_all_orders, name='all_orders'),

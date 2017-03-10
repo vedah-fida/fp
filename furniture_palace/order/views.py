@@ -10,8 +10,18 @@ from accounts.models import Customer, TempCarpenter
 
 
 # Create your views here.
+
+@login_required(login_url='/')
+def view_carpenter_orders(request):
+    carpenter = request.user
+    carpenter_active_orders = get_orders_for_carpenter(carpenter)
+    carpenter_assigned_orders = get_assigned_orders_for_carpenter(carpenter)
+    return render(request, 'order/order_carpenter_orders.html', locals())
+
+
 @login_required(login_url='/')
 def make_order_page(request):
+    user = request.user
     furniture = Furniture.objects.all()
     customers = Customer.objects.all()
     return render(request, 'order/order_make.html', locals())
@@ -38,6 +48,7 @@ def make_order(request):
     return HttpResponseRedirect(url)
 
 
+@login_required(login_url='/')
 def order_info(request, order_id):
     order = get_order(order_id)
     order_payment = get_order_payment(order_id)
@@ -59,7 +70,7 @@ def change_complete_status(request):
 @login_required(login_url='/')
 def view_all_orders(request):
     orders_list = get_started_orders()
-    paginator = Paginator(orders_list, 2)
+    paginator = Paginator(orders_list, 5)
     page = request.GET.get('page')
     try:
         orders = paginator.page(page)
@@ -148,7 +159,7 @@ def take_order(request):
     carpenter = request.user
 
     # check if carpenter has more than 4 already assigned to him/her
-    if carpenter_active_orders(carpenter) < 4:
+    if carpenter_active_orders_no(carpenter) < 4:
         order_id = request.POST['order_id']
         assign_order_self(carpenter, order_id)
         msg = "You have taken the order with id " + order_id
@@ -157,7 +168,7 @@ def take_order(request):
         styling = "card-panel green accent-4"
         return render(request, 'order/order_assign.html', locals())
     else:
-        msg = "Currently, you have the maximum allowed active orders."
+        msg = "Currently, you have the maximum allowed active orders. You can assign the order to a Temporary Carpenter."
         orders = get_unassigned_orders()
         temporary_carpenters = TempCarpenter.objects.all()
         styling = "card-panel red lighten-1"

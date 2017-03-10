@@ -5,10 +5,10 @@
     font-family: AbrilFatface;
     src: url('../fonts/fp_fonts/AbrilFatface-Regular.otf');
 }
+
 body{
     overflow: hidden;
 }
-
 .fill-vertical{
     height: 100vh;
 }
@@ -72,4 +72,18 @@ body{
 
 #incomplete{
     text-color: #ff1744;
+}
+.yes{
+    background-color: #009688;
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 3px;
+}
+.no{
+    background-color: #f44336;
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 3px;
 }

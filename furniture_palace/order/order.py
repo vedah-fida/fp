@@ -129,7 +129,7 @@ def remove_order(order_id):
     order_to_remove.delete()
 
 
-def carpenter_active_orders(carpenter):
+def carpenter_active_orders_no(carpenter):
     active_orders = Order.objects.filter(carpenter=carpenter, complete_status=False,
                                          temp_carpenter=None).count()
 
@@ -140,4 +140,11 @@ def carpenter_active_orders(carpenter):
         return active_orders
 
 
+def get_orders_for_carpenter(carpenter):
+    orders = Order.objects.filter(carpenter=carpenter, complete_status=False, temp_carpenter=None)
+    return orders
 
+
+def get_assigned_orders_for_carpenter(carpenter):
+    orders = Order.objects.filter(carpenter=carpenter, complete_status=False).exclude(temp_carpenter=None)
+    return orders

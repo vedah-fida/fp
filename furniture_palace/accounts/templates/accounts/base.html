@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link href="/static/css/styles.css" rel = "stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/static/css/materialize.css"/>
     <link rel="stylesheet" href="/static/css/fp.css"/>
@@ -21,26 +22,38 @@
         <div class="divider teal lighten-1"></div>
         <br><br>
         <div class="action-item ">
-            <a href="{% url 'accounts:customer_registration' %}">Customers</a>
+            <a href="{% url 'accounts:customer_registration' %}"><i class="fa fa-users" aria-hidden="true"></i>
+                &nbsp;&nbsp;Customers
+            </a>
         </div>
         <div class="action-item">
-            <a href="{% url 'orders:all_orders' %}">Orders</a>
+            <a href="{% url 'orders:all_orders' %}"><i class="fa fa-get-pocket" aria-hidden="true"></i>
+                &nbsp;&nbsp;Orders
+            </a>
         </div>
         <div class="action-item">
-            <a href="{% url 'catalogs:lent_tools' %}">Tools</a>
+            <a href="{% url 'catalogs:lent_tools' %}"><i class="fa fa-wrench" aria-hidden="true"></i>
+                &nbsp;&nbsp;Tools</a>
         </div>
-        <div class="action-item">
-            <!-- <a href="{% url 'reports:carpenter_payroll' %}"> My Payroll</a>-->
-            <a href="{% url 'reports:carpenter_payroll' %}" data-toggle="modal" data-target="#myModal" id="open">My
-                Payroll</a>
-
-
-        </div>
-        <div class="action-item">
-            <a href="{% url 'reports:monthly_report' %}">Monthly Report</a>
-        </div>
+        {% if request.user.is_staff %}
+            <div class="action-item">
+                <a href="{% url 'reports:monthly_report' %}"><i class="fa fa-pie-chart" aria-hidden="true"></i>
+                    &nbsp;&nbsp;Monthly Report
+                </a>
+            </div>
+        {% else %}
+            <div class="action-item">
+                <!-- <a href="{% url 'reports:carpenter_payroll' %}"> My Payroll</a>-->
+                <a href="{% url 'reports:carpenter_payroll' %}" data-toggle="modal" data-target="#myModal" id="open">
+                    <i class="fa fa-usd" aria-hidden="true"></i>
+                    &nbsp;&nbsp;My Payroll
+                </a>
+            </div>
+        {% endif %}
         <div id="logout" class="action-item">
-            <a href="{% url 'accounts:logout' %}">logout</a>
+            <a href="{% url 'accounts:logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                &nbsp;&nbsp;logout
+            </a>
         </div>
     </div>
 
@@ -53,17 +66,6 @@
 
         <!--order top navigation-->
         {% block navigation %}
-        <div class="row">
-
-        </div>
-        <div class="l12 m12 s12">
-            <div class="col l3 m3 s12">
-                <a href="{% url 'accounts:customer_registration' %}">Register Customer</a>
-            </div>
-            <div class="col l3 m3 s12">
-                <a href="{% url 'accounts:view_customer' %}">View Customer</a>
-            </div>
-        </div>
         {% endblock %}
 
         <!--content body-->

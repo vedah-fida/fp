@@ -32,7 +32,7 @@ def show_lent_tools(request):
 @login_required(login_url='/')
 def show_tools_record(request):
     lent_tools_list = get_lent_tools_record()
-    paginator = Paginator(lent_tools_list, 8)
+    paginator = Paginator(lent_tools_list, 6)
     page = request.GET.get('page')
     try:
         lent_tools = paginator.page(page)

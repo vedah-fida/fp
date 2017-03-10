@@ -1,0 +1,181 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}
+Make Orders Furniture Palace
+{% endblock %}
+
+{% block heading %}
+<div class="heading">
+    <h4>Orders.</h4>
+</div>
+{% endblock %}
+
+<!--order top navigation-->
+{% block navigation %}
+<nav>
+    <div class="nav-wrapper teal">
+      <ul id="nav-mobile" class="center">
+        <li class="active"><a href="{% url 'orders:active_orders' %}">Active Orders</a></li>
+        <li><a href="{% url 'orders:order_page' %}">Make Order</a></li>
+        <li><a href="{% url 'orders:assign_order_page' %}">Assign Order</a></li>
+        <li><a href="{% url 'orders:payment_list' %}">Order Payments</a></li>
+        <li><a href="{% url 'orders:all_orders' %}">View Orders</a></li>
+      </ul>
+    </div>
+</nav>
+{% endblock %}
+
+
+<!--content-->
+{% block content %}
+<div class="row">
+    <nav class="nav-extended teal">
+        <div class="nav-content">
+            <ul class="tabs tabs-transparent">
+                <div class="col l6 m6 s12">
+
+                    <li class="tab">
+                        <a class="active" href="#carpenter_orders">
+                            Carpenter active orders&nbsp;&nbsp;&nbsp;
+                            <span style="font-weight: bolder;" class="new badge red lighten-1" data-badge-caption="">
+                            {{ carpenter_active_orders|length }}
+                        </span>
+                        </a>
+                    </li>
+
+                </div>
+                <div class="col l6 m6 s12">
+                    <li class="tab">
+                        <a href="#assigned_orders">
+                            Assigned active orders
+                            <span style="font-weight: bolder;" class="new badge red lighten-1" data-badge-caption="">
+                            {{ carpenter_assigned_orders|length }}
+                        </a>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </nav>
+    <div id="carpenter_orders" class="col s12">
+        <table class="bordered responsive-table highlight">
+            <thead>
+              <tr>
+                  <th>Order Id</th>
+                  <th>Order Name</th>
+                  <th>Quantity</th>
+                  <th>Order Date</th>
+                  <th>Complete Status</th>
+                  <th>Customer</th>
+                  <th>Carpenter</th>
+              </tr>
+            </thead>
+
+             <tbody id="orders">
+                {% for order in carpenter_active_orders %}
+                  <tr>
+                      <td>{{ order.id }}</td>
+                      <td>{{ order.order_name }}</td>
+                      <td>{{ order.quantity }}</td>
+                      <td>{{ order.order_date }}</td>
+                      <td>
+                          <form action="{% url 'orders:change_complete_status' %}" id="complete_status_form" method="post">
+                             {% csrf_token %}
+                             <table>
+                                 <tr>
+                                     <td>
+                                         <select id="complete_status" name="order_status">
+                                             {% if order.complete_status is True %}
+                                             <option value={{ order.complete_status }} selected>yes</option>
+                                             <option value=False>no</option>
+                                             {% else %}
+                                             <option value=True>yes</option>
+                                             <option value={{ order.complete_status }} selected>no</option>
+                                             {% endif %}
+                                         </select>
+                                     </td>
+                                     <td>
+                                         <input type="text" name="order_id" value="{{ order.id }}" hidden />
+                                         <input type="submit" value="change" />
+                                     </td>
+                                 </tr>
+                              </table>
+                         </form>
+                       </td>
+                      <td>{{ order.customer }}</td>
+                      <td>{{ order.carpenter }}</td>
+                  </tr>
+                {% empty %}
+                <tr><div class="col l4 m4 s12"></div>
+                    <div class="col l4 m4 s12">
+                       <p class="card-panel red lighten-2" style="text-align: center; color: #ffffff;">No active assigned orders.</p>
+                   </div>
+                    <div class="col l4 m4 s12"></div></tr>
+                {% endfor %}
+              </tbody>
+        </table>
+    </div>
+    <div id="assigned_orders" class="col s12">
+
+         <table class="bordered responsive-table highlight">
+            <thead>
+              <tr>
+                  <th>Order Id</th>
+                  <th>Order Name</th>
+                  <th>Quantity</th>
+                  <th>Order Date</th>
+                  <th>Complete Status</th>
+                  <th>Customer</th>
+                  <th>Carpenter</th>
+              </tr>
+            </thead>
+
+             <tbody id="orders">
+                {% for order in carpenter_assigned_orders %}
+                  <tr>
+                      <td>{{ order.id }}</td>
+                      <td>{{ order.order_name }}</td>
+                      <td>{{ order.quantity }}</td>
+                      <td>{{ order.order_date }}</td>
+                      <td>
+                          <form action="{% url 'orders:change_complete_status' %}" id="complete_status_form" method="post">
+                             {% csrf_token %}
+                             <table>
+                                 <tr>
+                                     <td>
+                                         <select id="complete_status" name="order_status">
+                                             {% if order.complete_status is True %}
+                                             <option value={{ order.complete_status }} selected>yes</option>
+                                             <option value=False>no</option>
+                                             {% else %}
+                                             <option value=True>yes</option>
+                                             <option value={{ order.complete_status }} selected>no</option>
+                                             {% endif %}
+                                         </select>
+                                     </td>
+                                     <td>
+                                         <input type="text" name="order_id" value="{{ order.id }}" hidden />
+                                         <input type="submit" value="change" />
+                                     </td>
+                                 </tr>
+                              </table>
+                         </form>
+                       </td>
+                      <td>{{ order.customer }}</td>
+                      <td>{{ order.carpenter }}</td>
+                  </tr>
+                {% empty %}
+                <tr>
+                    <!--the empty div's are for centering the middle div with content-->
+                   <div class="col l4 m4 s12"></div>
+                    <div class="col l4 m4 s12">
+                       <p class="card-panel red lighten-2" style="text-align: center; color: #ffffff;">No active assigned orders.</p>
+                   </div>
+                    <div class="col l4 m4 s12"></div>
+                </tr>
+                {% endfor %}
+              </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

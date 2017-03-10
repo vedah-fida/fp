@@ -19,7 +19,7 @@ def login_carpenter(request):
     user = authenticate(username=user_name, password=password)
     if user is not None and user.is_active:
         login(request, user)
-        url = urlresolvers.reverse('orders:all_orders')
+        url = urlresolvers.reverse('orders:active_orders')
         return HttpResponseRedirect(url)
     else:
         error_msg = "Incorrect username or password. Please try again."
@@ -57,7 +57,7 @@ def register_customer(request):
 @login_required(login_url='/')
 def view_customers(request):
     customers_list = get_all_customers()
-    paginator = Paginator(customers_list, 6)
+    paginator = Paginator(customers_list, 5)
     page = request.GET.get('page')
     try:
         customers = paginator.page(page)
