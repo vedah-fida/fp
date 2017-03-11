@@ -12,6 +12,7 @@ Carpenter Report.
 
 {% block navigation %}
 <a class="waves-effect waves-light btn" href="#modal1">Carpenter Report</a>
+<a class="waves-effect waves-light btn" href="#modal2">Carpenter Report Last Month</a>
 {% endblock %}
 {% block content %}
  <!-- Modal Trigger -->
@@ -23,7 +24,7 @@ Carpenter Report.
         <img src="/static/img/furniture_palace.png" alt="Furniture Palace Image Logo">
             </div>
             <div class = "col l8">
-      <h4 id = "carpenter_name">Carpenter name Report</h4>
+      <h4 id = "carpenter_name">{{ username|capfirst }} report for {{ month }} {{ year }}</h4>
             </div>
         </div>
             <table  class ="bordered" id="main-table">
@@ -94,6 +95,84 @@ Carpenter Report.
     </div>
   </div>
 
+<!--previous carpenter salary-->
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <div class = "row">
+            <div class = "col l4">
+        <img src="/static/img/furniture_palace.png" alt="Furniture Palace Image Logo">
+            </div>
+            <div class = "col l8">
+      <h4 id = "carpenter_name">{{ username|capfirst }} report for {{ previous_month }} {{ previous_year }}</h4>
+            </div>
+        </div>
+            <table  class ="bordered" id="main-table">
+                <thead>
+                    <tr>
+                        <th>Commission for Orders</th>
+                        <th id = "second">Commission Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c_order in previous_carpenter_orders %}
+                    <tr>
+                        <td>{{ c_order.order_name }}</td>
+                        <td id = "figures">{{ c_order.order_price|multiply:orders_commission|floatformat:2 }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td>No orders</td>
+                        <td>0.00</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>Commission for assigned Orders</th>
+                        <th id = "second">Commission Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a_order in previous_assigned_orders %}
+                    <tr>
+                        <td>{{ a_order.order_name }}</td>
+                        <td id = "figures">{{ a_order.order_price|multiply:assigned_order_commission|floatformat:2 }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td>No orders</td>
+                        <td>0.00</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>Salary</th>
+                        <th id = "second">Amount in Figures</th>
+                    </tr>
+                    <tr>
+                        <td>Basic Salary</td>
+                        <td id = "figures">{{ previous_salary }}</td>
+                    </tr>
+                </thead>
+                </tbody>
+                <tr>
+                    <ul class="list-group">
+                        <td>
+                            <h4><strong>Gross Salary</strong></h4>
+                        </td>
+                        <td name="carpenter_gross_pay">
+                            <h4 id = "figures"><strong>{{ previous_gross_salary }}</strong></h4>
+                        </td>
+                    </ul>
+                </tr>
+            </table>
+    </div>
+    <div class="modal-footer">
+        <button type = "button" class = "btn btn-success" onclick="myFunction()">Print</button>
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
 <p>Content to be added below</p>
 
 

@@ -245,27 +245,27 @@ Monthly Report.
             <tbody>
             <tr>
                 <td>Damage Fees</td>
-                <td name="total_damage_fee" id = "figures">{{ damage_fee_totals|floatformat:2 }}</td>
+                <td name="total_damage_fee" id = "figures">{{ previous_damage_fee_totals|floatformat:2 }}</td>
             </tr>
             <tr>
                 <td>Salaries</td>
-                <td name="total_salaries" id = "figures">{{ salary_totals|floatformat:2 }}</td>
+                <td name="total_salaries" id = "figures">{{ previous_salary_totals|floatformat:2 }}</td>
             </tr>
             <tr>
                 <td>Orders(complete)</td>
-                <td name="total_orders" id = "figures">{{ orders_totals|floatformat:2 }}</td>
+                <td name="total_orders" id = "figures">{{ previous_orders_totals|floatformat:2 }}</td>
             </tr>
             <tr>
                 <td>Commissions</td>
-                <td name="total_commissions" id = "figures">{{ commission_totals|floatformat:2 }}</td>
+                <td name="total_commissions" id = "figures">{{ previous_commission_totals|floatformat:2 }}</td>
             </tr>
             <tr>
                 <td>Storage Fees</td>
-                <td name="total_storage_fee" id = "figures">{{ storage_fee_totals|floatformat:2 }}</td>
+                <td name="total_storage_fee" id = "figures">{{ previous_storage_fee_totals|floatformat:2 }}</td>
             </tr>
             <tr>
                 <td>Tool Lending Fee</td>
-                <td name="total_lending_fee" id = "figures">{{ lending_fee_totals|floatformat:2 }}</td>
+                <td name="total_lending_fee" id = "figures">{{ previous_lending_fee_totals|floatformat:2 }}</td>
             </tr>
             </tbody>
             <tr>
@@ -283,7 +283,7 @@ Monthly Report.
             <tr>
                 <td><h5><strong>Damages</strong></h5></td>
             </tr>
-            {% for damaged_tool in damaged_tools %}
+            {% for damaged_tool in previous_damaged_tools %}
             <tr>
                 <td>{{ damaged_tool.tool }}</td>
                 <td id = "figures">{{ damaged_tool.tool.damage_fee }}</td>
@@ -299,7 +299,7 @@ Monthly Report.
 
             <tr>
                 <th>Total Damage Fee</th>
-                <th id = "figures">{{ damage_fee_totals|floatformat:2 }}</th>
+                <th id = "figures">{{ previous_damage_fee_totals|floatformat:2 }}</th>
             </tr>
 
             <tbody>
@@ -307,7 +307,7 @@ Monthly Report.
             <tr>
                 <td><h4><strong>Salaries</strong></h4></td>
             </tr>
-            {% for profile in carpenter_profiles %}
+            {% for profile in previous_carpenter_profiles %}
             <tr>
                 <td>{{ profile.carpenter }}</td>
                 <td name="carpenter_y_salary" id = "figures">{{ profile.carpenter_salary }}</td>
@@ -317,7 +317,7 @@ Monthly Report.
 
             <tr>
                 <th>Total Salaries</th>
-                <th name="total_salaries" id="figures">{{ salary_totals }}</th>
+                <th name="total_salaries" id="figures">{{ previous_salary_totals }}</th>
             </tr>
 
             <tbody>
@@ -325,7 +325,7 @@ Monthly Report.
             <tr>
                 <td><h4><strong>Complete Orders</strong></h4></td>
             </tr>
-            {% for order in complete_orders %}
+            {% for order in previous_complete_orders %}
             <tr>
                 <td>{{ order.order_name }}</td>
                 <td name="order_price" id = "figures">{{ order.order_price }}</td>
@@ -334,7 +334,7 @@ Monthly Report.
             </tbody>
             <tr>
                 <th>Total Order Fee</th>
-                <th name="total_orders" id = "figures">{{ orders_totals|floatformat:2 }}</th>
+                <th name="total_orders" id = "figures">{{ previous_orders_totals|floatformat:2 }}</th>
             </tr>
             <tbody>
 
@@ -344,20 +344,20 @@ Monthly Report.
             <tr>
                 <!-- for more details, inherit form from carpenter report-->
                 <td>Main Carpenters</td>
-                <td name="total_permanent_carpenter_commissions" id = "figures">{{ carpenter_commission_totals|floatformat:2 }}
+                <td name="total_permanent_carpenter_commissions" id = "figures">{{ previous_carpenter_commission_totals|floatformat:2 }}
                 </td>
             </tr>
             <tr>
                 <!-- for more details, inherit form from temp-carpenter report-->
 
                 <td>Temporary Carpenters</td>
-                <td name="total_temp_carpenter_commission" id = "figures">{{ temp_carpenter_commission_totals|floatformat:2 }}
+                <td name="total_temp_carpenter_commission" id = "figures">{{ previous_temp_carpenter_commission_totals|floatformat:2 }}
                 </td>
             </tr>
             </tbody>
             <tr>
                 <th>Total Commissions</th>
-                <th name="main_and_temp_carp_commissions" id = "figures">{{ commission_totals|floatformat:2 }}</th>
+                <th name="main_and_temp_carp_commissions" id = "figures">{{ previous_commission_totals|floatformat:2 }}</th>
             </tr>
             <tbody>
 
@@ -372,7 +372,7 @@ Monthly Report.
             </tr>
             </thead>
             <tbody>
-            {% for order in orders_with_storage_fee %}
+            {% for order in previous_orders_with_storage_fee %}
             <tr>
                 <td name="delayed_order_name">{{order.order_id}}</td>
                 <td name="extended_days">{{ order.days_in_store }}</td>
@@ -387,14 +387,14 @@ Monthly Report.
             </tbody>
             <tr>
                 <th>Total Storage Fee</th>
-                <th name="total_storage_fee" id = "figures">{{ storage_fee_totals|floatformat:2 }}</th>
+                <th name="total_storage_fee" id = "figures">{{ previous_storage_fee_totals|floatformat:2 }}</th>
             </tr>
             <tbody>
 
             <tr>
                 <td><h4><strong>Lending Fee</strong></h4></td>
             </tr>
-            {% for lent_tool in lent_tools %}
+            {% for lent_tool in previous_lent_tools %}
             <tr>
                 <td name="tool_name">{{ lent_tool.tool }}</td>
                 <td name="lending_fee" id = "figures">{{ lent_tool.lending_fee }}</td>
@@ -408,7 +408,7 @@ Monthly Report.
             </tbody>
             <tr>
                 <th>Total Lending Fee</th>
-                <th name="total_lending_fee" id = "figures">{{ lending_fee_totals|floatformat:2 }}</th>
+                <th name="total_lending_fee" id = "figures">{{ previous_lending_fee_totals|floatformat:2 }}</th>
             </tr>
 
 
