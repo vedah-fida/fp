@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="746cacf8-976d-47cd-9ae5-f711cb6f23e5" name="Default" comment="Customer and Order modules updated. -_-">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/reports/templates/reports/temp_carpenter_report.htm" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/reports.py" afterPath="$PROJECT_DIR$/reports/reports.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/templates/reports/carpenter_report.html" afterPath="$PROJECT_DIR$/reports/templates/reports/carpenter_report.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/templates/reports/monthly_report.html" afterPath="$PROJECT_DIR$/reports/templates/reports/monthly_report.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/views.py" afterPath="$PROJECT_DIR$/reports/views.py" />
     </list>
     <ignored path="furniture_palace.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,21 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="carpenter_report.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/reports/templates/reports/carpenter_report.html">
+      <file leaf-file-name="monthly_report.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/reports/templates/reports/monthly_report.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="26" column="52" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/reports/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="-3128">
+              <caret line="233" column="93" selection-start-line="233" selection-start-column="93" selection-end-line="233" selection-end-column="93" />
               <folding />
             </state>
           </provider>
@@ -148,11 +133,11 @@
         <option value="$PROJECT_DIR$/order/views.py" />
         <option value="$PROJECT_DIR$/reports/templates/reports/previous_monthly_report.html" />
         <option value="$PROJECT_DIR$/reports/templates/reports/previous_carpenter_report.html" />
-        <option value="$PROJECT_DIR$/reports/templates/reports/monthly_report.html" />
         <option value="$PROJECT_DIR$/reports/urls.py" />
         <option value="$PROJECT_DIR$/reports/reports.py" />
         <option value="$PROJECT_DIR$/reports/views.py" />
         <option value="$PROJECT_DIR$/reports/templates/reports/carpenter_report.html" />
+        <option value="$PROJECT_DIR$/reports/templates/reports/monthly_report.html" />
       </list>
     </option>
   </component>
@@ -456,9 +441,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2203514" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2203514" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32735425" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.938294" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -824,14 +809,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reports/templates/reports/monthly_report.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="434" column="14" selection-start-line="434" selection-start-column="14" selection-end-line="434" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/reports/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -862,8 +839,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/reports/templates/reports/carpenter_report.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
+        <state relative-caret-position="-1166">
           <caret line="26" column="52" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reports/templates/reports/monthly_report.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3128">
+          <caret line="233" column="93" selection-start-line="233" selection-start-column="93" selection-end-line="233" selection-end-column="93" />
           <folding />
         </state>
       </provider>
