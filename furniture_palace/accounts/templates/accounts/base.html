@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="/static/css/styles.css" rel = "stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="/static/css/materialize.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
     <link rel="stylesheet" href="/static/css/fp.css"/>
     <title>{% block title %}Carpenter Home{% endblock %}</title>
 </head>
@@ -43,9 +42,7 @@
             </div>
         {% else %}
             <div class="action-item">
-                <!-- <a href="{% url 'reports:carpenter_payroll' %}"> My Payroll</a>-->
-                <a href="{% url 'reports:carpenter_payroll' %}" data-toggle="modal" data-target="#myModal" id="open">
-                    <i class="fa fa-usd" aria-hidden="true"></i>
+                <a href="{% url 'reports:carpenter_payroll' %}" data-toggle="modal" data-target="#myModal" id="open"><i class="fa fa-usd" aria-hidden="true"></i>
                     &nbsp;&nbsp;My Payroll
                 </a>
             </div>
@@ -78,8 +75,8 @@ function myFunction() {
 }
 </script>
 <!--materialize & jquery js file-->
-<script src="/static/js/jquery-3.1.1.min.js"></script>
-<script src="/static/js/materialize.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 <script src="/static/js/fp.js"></script>
 </body>
 </html>

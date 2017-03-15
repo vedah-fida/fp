@@ -1,0 +1,1 @@
+web: gunicorn furniture_palace.wsgi --log-file -
